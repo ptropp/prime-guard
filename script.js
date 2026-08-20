@@ -1,232 +1,314 @@
-// ==========================================
-// PRIME GUARD WEBSITE
-// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("messageModal");
+
+    const closeModal = document.getElementById("closeModal");
+
+    const modalButton = document.getElementById("modalButton");
+
+    const modalTitle = document.getElementById("modalTitle");
+
+    const modalText = document.getElementById("modalText");
+
+    const modalTag = document.getElementById("modalTag");
 
 
-// DISCORD APPLICATION INFORMATION
+    // -----------------------------
+    // DISCORD CONFIGURATION
+    // -----------------------------
 
-const CLIENT_ID = "154008590462025738";
+    const CLIENT_ID = "154008590462025738";
 
-const REDIRECT_URI =
-    "https://ptrop.github.io/prime-guard/";
+    const REDIRECT_URI =
+        window.location.origin + "/prime-guard/";
 
-
-// DISCORD LOGIN URL
-
-function getDiscordLoginURL() {
-
-    const params = new URLSearchParams({
-        client_id: CLIENT_ID,
-        response_type: "code",
-        redirect_uri: REDIRECT_URI,
-        scope: "identify guilds"
-    });
-
-    return "https://discord.com/oauth2/authorize?" + params.toString();
-}
+    const DISCORD_SCOPE =
+        "identify guilds";
 
 
-// CONNECT DISCORD
+    // -----------------------------
+    // MODAL FUNCTIONS
+    // -----------------------------
 
-function connectDiscord() {
+    function openModal(title, text, tag) {
 
-    window.location.href = getDiscordLoginURL();
+        modalTitle.textContent = title;
 
-}
+        modalText.textContent = text;
 
+        modalTag.textContent = tag;
 
-// MODAL ELEMENTS
+        modal.classList.remove("hidden");
 
-const modal =
-    document.getElementById("messageModal");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalText =
-    document.getElementById("modalText");
-
-const modalButton =
-    document.getElementById("modalButton");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-
-// SHOW MODAL
-
-function showModal(title, text, buttonText, callback) {
-
-    modalTitle.textContent = title;
-
-    modalText.textContent = text;
-
-    modalButton.textContent = buttonText;
-
-    modal.classList.remove("hidden");
-
-
-    modalButton.onclick = function () {
-
-        modal.classList.add("hidden");
-
-        if (callback) {
-            callback();
-        }
-
-    };
-
-}
-
-
-// CLOSE MODAL
-
-closeModal.addEventListener("click", function () {
-
-    modal.classList.add("hidden");
-
-});
-
-
-modal.addEventListener("click", function (event) {
-
-    if (event.target === modal) {
-
-        modal.classList.add("hidden");
+        document.body.style.overflow = "hidden";
 
     }
 
-});
+
+    function hideModal() {
+
+        modal.classList.add("hidden");
+
+        document.body.style.overflow = "";
+
+    }
 
 
-// ADD TO DISCORD BUTTONS
+    // -----------------------------
+    // ADD TO DISCORD BUTTONS
+    // -----------------------------
 
-document
-    .querySelectorAll(".add-button")
-    .forEach(function (button) {
+    const addButtons =
+        document.querySelectorAll(".add-button");
 
-        button.addEventListener("click", function () {
 
-            connectDiscord();
+    addButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const discordLoginURL =
+
+                "https://discord.com/oauth2/authorize" +
+
+                "?client_id=" + CLIENT_ID +
+
+                "&response_type=code" +
+
+                "&redirect_uri=" +
+
+                encodeURIComponent(REDIRECT_URI) +
+
+                "&scope=" +
+
+                encodeURIComponent(DISCORD_SCOPE);
+
+
+            window.location.href =
+                discordLoginURL;
 
         });
 
     });
 
 
-// FREE PLAN
+    // -----------------------------
+    // PLAN BUTTONS
+    // -----------------------------
 
-const freeButton =
-    document.querySelector(".free-button");
+    const planButtons =
+        document.querySelectorAll(".plan-button");
 
 
-if (freeButton) {
+    planButtons.forEach((button) => {
 
-    freeButton.addEventListener("click", function () {
+        button.addEventListener("click", () => {
 
-        localStorage.setItem(
-            "primeGuardPlan",
-            "free"
-        );
+            const plan =
+                button.dataset.plan;
 
-        connectDiscord();
+
+            if (plan === "FREE") {
+
+                const discordLoginURL =
+
+                    "https://discord.com/oauth2/authorize" +
+
+                    "?client_id=" + CLIENT_ID +
+
+                    "&response_type=code" +
+
+                    "&redirect_uri=" +
+
+                    encodeURIComponent(REDIRECT_URI) +
+
+                    "&scope=" +
+
+                    encodeURIComponent(DISCORD_SCOPE);
+
+
+                window.location.href =
+                    discordLoginURL;
+
+            }
+
+
+            if (plan === "PLUS") {
+
+                openModal(
+
+                    "PRIME PLUS",
+
+                    "PRIME PLUS is being prepared for launch. Pricing and premium access will be available soon.",
+
+                    "PREMIUM ACCESS"
+
+                );
+
+            }
+
+
+            if (plan === "PRO") {
+
+                openModal(
+
+                    "PRIME PRO",
+
+                    "PRIME PRO is being prepared for launch. Maximum security features and premium access will be available soon.",
+
+                    "PREMIUM ACCESS"
+
+                );
+
+            }
+
+        });
 
     });
 
-}
+
+    // -----------------------------
+    // CLOSE MODAL
+    // -----------------------------
+
+    closeModal.addEventListener("click", hideModal);
 
 
-// PLUS PLAN
-
-const plusButton =
-    document.querySelector(".plus-button");
+    modalButton.addEventListener("click", hideModal);
 
 
-if (plusButton) {
+    modal.addEventListener("click", (event) => {
 
-    plusButton.addEventListener("click", function () {
+        if (
+            event.target === modal ||
+            event.target.classList.contains("modal-overlay")
+        ) {
 
-        localStorage.setItem(
-            "primeGuardPlan",
-            "plus"
-        );
+            hideModal();
 
-
-        showModal(
-            "PRIME PLUS",
-            "Payment checkout will be connected here. After payment, PRIME GUARD can assign your PRIME PLUS Discord role automatically.",
-            "Coming Soon",
-            null
-        );
+        }
 
     });
 
-}
 
+    // -----------------------------
+    // ESCAPE KEY
+    // -----------------------------
 
-// PRO PLAN
+    document.addEventListener("keydown", (event) => {
 
-const proButton =
-    document.querySelector(".pro-button");
+        if (
+            event.key === "Escape" &&
+            !modal.classList.contains("hidden")
+        ) {
 
+            hideModal();
 
-if (proButton) {
-
-    proButton.addEventListener("click", function () {
-
-        localStorage.setItem(
-            "primeGuardPlan",
-            "pro"
-        );
-
-
-        showModal(
-            "PRIME PRO",
-            "Payment checkout will be connected here. After payment, PRIME GUARD can assign your PRIME PRO Discord role automatically.",
-            "Coming Soon",
-            null
-        );
+        }
 
     });
 
-}
+
+    // -----------------------------
+    // NAVIGATION ACTIVE EFFECT
+    // -----------------------------
+
+    const sections =
+        document.querySelectorAll("section[id]");
 
 
-// DISCORD RETURN CHECK
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
 
-const urlParams =
-    new URLSearchParams(
-        window.location.search
+
+    function updateActiveNavigation() {
+
+        let currentSection = "";
+
+
+        sections.forEach((section) => {
+
+            const sectionTop =
+                section.offsetTop - 180;
+
+
+            if (
+                window.scrollY >= sectionTop
+            ) {
+
+                currentSection =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach((link) => {
+
+            link.classList.remove("active");
+
+
+            if (
+                link.getAttribute("href") ===
+                "#" + currentSection
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation
     );
 
 
-const authorizationCode =
-    urlParams.get("code");
+    // -----------------------------
+    // SCROLL REVEAL
+    // -----------------------------
+
+    const revealElements =
+        document.querySelectorAll(
+
+            ".feature-card, .plan-card, .status-panel, .cta-box"
+
+        );
 
 
-if (authorizationCode) {
+    const observer = new IntersectionObserver(
 
-    console.log(
-        "Discord authorization received."
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("revealed");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
     );
 
-    console.log(
-        authorizationCode
-    );
 
+    revealElements.forEach((element) => {
 
-    window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname
-    );
+        observer.observe(element);
 
+    });
 
-    showModal(
-        "Discord Connected",
-        "Your Discord authorization was received successfully. The next step is connecting this to the PRIME GUARD backend so purchases can automatically give users their Discord roles.",
-        "Continue",
-        null
-    );
-
-}
+});
