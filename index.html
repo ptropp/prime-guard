@@ -1,125 +1,68 @@
-// ==============================
-// PRIME GUARD - WEBSITE SCRIPT
-// ==============================
-
-// Your Discord application client ID
 const CLIENT_ID = "154008590462025738";
-
-// Your GitHub Pages website
 const REDIRECT_URI = "https://ptrop.github.io/prime-guard/";
-
-// Discord OAuth scopes
 const SCOPES = "identify guilds";
 
-// Build the Discord login URL
 const discordLoginURL =
-  `https://discord.com/oauth2/authorize` +
-  `?client_id=${CLIENT_ID}` +
-  `&response_type=code` +
-  `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
-  `&scope=${encodeURIComponent(SCOPES)}`;
-
-
-// ==============================
-// ADD TO DISCORD BUTTONS
-// ==============================
+  "https://discord.com/oauth2/authorize" +
+  "?client_id=" + CLIENT_ID +
+  "&response_type=code" +
+  "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+  "&scope=" + encodeURIComponent(SCOPES);
 
 function connectDiscord() {
   window.location.href = discordLoginURL;
 }
 
-
-// ==============================
-// PLAN SELECTION
-// ==============================
-
 function choosePlan(plan) {
   localStorage.setItem("primeGuardPlan", plan);
 
   if (plan === "free") {
-    alert("FREE plan selected! Now connect your Discord account.");
-  }
-
-  if (plan === "plus") {
-    alert("PRIME PLUS selected! Payment setup will be added next.");
-  }
-
-  if (plan === "pro") {
-    alert("PRIME PRO selected! Payment setup will be added next.");
+    connectDiscord();
+  } else {
+    alert(
+      plan === "plus"
+        ? "PRIME PLUS payment setup is coming next."
+        : "PRIME PRO payment setup is coming next."
+    );
   }
 }
 
-
-// ==============================
-// WAIT FOR PAGE TO LOAD
-// ==============================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  // Add to Discord buttons
+document.addEventListener("DOMContentLoaded", function () {
   const addToDiscordButtons = document.querySelectorAll(
     ".add-button, .primary-button"
   );
 
-  addToDiscordButtons.forEach(button => {
-    button.addEventListener("click", (event) => {
+  addToDiscordButtons.forEach(function (button) {
+    button.addEventListener("click", function (event) {
       event.preventDefault();
       connectDiscord();
     });
   });
 
-
-  // FREE plan button
-  const freeButton = document.querySelector(
-    "#free-button, .free-button"
-  );
+  const freeButton = document.querySelector(".free-button");
 
   if (freeButton) {
-    freeButton.addEventListener("click", (event) => {
+    freeButton.addEventListener("click", function (event) {
       event.preventDefault();
-
       choosePlan("free");
-
-      setTimeout(() => {
-        connectDiscord();
-      }, 500);
     });
   }
 
-
-  // PLUS plan button
-  const plusButton = document.querySelector(
-    "#plus-button, .plus-button"
-  );
+  const plusButton = document.querySelector(".plus-button");
 
   if (plusButton) {
-    plusButton.addEventListener("click", (event) => {
+    plusButton.addEventListener("click", function (event) {
       event.preventDefault();
-
       choosePlan("plus");
-
-      setTimeout(() => {
-        connectDiscord();
-      }, 500);
     });
   }
 
-
-  // PRO plan button
-  const proButton = document.querySelector(
-    "#pro-button, .pro-button"
-  );
+  const proButton = document.querySelector(".pro-button");
 
   if (proButton) {
-    proButton.addEventListener("click", (event) => {
+    proButton.addEventListener("click", function (event) {
       event.preventDefault();
-
       choosePlan("pro");
-
-      setTimeout(() => {
-        connectDiscord();
-      }, 500);
     });
   }
-
 });
