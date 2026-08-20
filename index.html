@@ -1,591 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
+// ==============================
+// PRIME GUARD - WEBSITE SCRIPT
+// ==============================
 
-<head>
+// Your Discord application client ID
+const CLIENT_ID = "154008590462025738";
 
-    <meta charset="UTF-8">
+// Your GitHub Pages website
+const REDIRECT_URI = "https://ptrop.github.io/prime-guard/";
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+// Discord OAuth scopes
+const SCOPES = "identify guilds";
 
-    <title>PRIME GUARD | Discord Security</title>
+// Build the Discord login URL
+const discordLoginURL =
+  `https://discord.com/oauth2/authorize` +
+  `?client_id=${CLIENT_ID}` +
+  `&response_type=code` +
+  `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+  `&scope=${encodeURIComponent(SCOPES)}`;
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
 
-</head>
+// ==============================
+// ADD TO DISCORD BUTTONS
+// ==============================
 
+function connectDiscord() {
+  window.location.href = discordLoginURL;
+}
 
-<body>
 
+// ==============================
+// PLAN SELECTION
+// ==============================
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+function choosePlan(plan) {
+  localStorage.setItem("primeGuardPlan", plan);
 
-    <nav>
+  if (plan === "free") {
+    alert("FREE plan selected! Now connect your Discord account.");
+  }
 
-        <div class="logo">
-            🛡️ PRIME GUARD
-        </div>
+  if (plan === "plus") {
+    alert("PRIME PLUS selected! Payment setup will be added next.");
+  }
 
+  if (plan === "pro") {
+    alert("PRIME PRO selected! Payment setup will be added next.");
+  }
+}
 
-        <div class="nav-links">
 
-            <a href="#features">
-                Features
-            </a>
+// ==============================
+// WAIT FOR PAGE TO LOAD
+// ==============================
 
-            <a href="#status">
-                Status
-            </a>
+document.addEventListener("DOMContentLoaded", () => {
 
-            <a href="#pricing">
-                Pricing
-            </a>
+  // Add to Discord buttons
+  const addToDiscordButtons = document.querySelectorAll(
+    ".add-button, .primary-button"
+  );
 
-        </div>
+  addToDiscordButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      connectDiscord();
+    });
+  });
 
 
-        <a
-            href="#pricing"
-            class="add-button"
-        >
-            Get Started
-        </a>
+  // FREE plan button
+  const freeButton = document.querySelector(
+    "#free-button, .free-button"
+  );
 
-    </nav>
+  if (freeButton) {
+    freeButton.addEventListener("click", (event) => {
+      event.preventDefault();
 
+      choosePlan("free");
 
-    <!-- =========================
-         HERO
-    ========================== -->
+      setTimeout(() => {
+        connectDiscord();
+      }, 500);
+    });
+  }
 
-    <section class="hero">
 
-        <div class="badge">
-            🟢 PRIME SECURITY SYSTEM ONLINE
-        </div>
+  // PLUS plan button
+  const plusButton = document.querySelector(
+    "#plus-button, .plus-button"
+  );
 
+  if (plusButton) {
+    plusButton.addEventListener("click", (event) => {
+      event.preventDefault();
 
-        <h1>
-            Advanced Discord
-            <span>Security.</span>
-            Automated.
-        </h1>
+      choosePlan("plus");
 
-
-        <p>
-            PRIME GUARD continuously monitors your Discord
-            server for suspicious activity, spam, raids, and
-            security threats — automatically.
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                href="#pricing"
-                class="primary-button"
-            >
-                Get Started
-            </a>
-
-
-            <a
-                href="#features"
-                class="secondary-button"
-            >
-                Explore Features
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FEATURES
-    ========================== -->
-
-    <section
-        id="features"
-        class="features"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                Security that never stops watching.
-            </h2>
-
-            <p>
-                Automated protection designed to help keep
-                your Discord community safe.
-            </p>
-
-        </div>
-
-
-        <div class="feature-grid">
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🚨
-                </div>
-
-                <h3>
-                    Raid Detection
-                </h3>
-
-                <p>
-                    Detects abnormal member join activity
-                    and automatically responds to potential
-                    server raids.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    💬
-                </div>
-
-                <h3>
-                    Anti-Spam
-                </h3>
-
-                <p>
-                    Tracks message activity and identifies
-                    users who exceed security thresholds.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    Threat Scoring
-                </h3>
-
-                <p>
-                    PRIME analyzes suspicious activity and
-                    builds a threat level for your server.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Automatic Response
-                </h3>
-
-                <p>
-                    Automatically responds to dangerous
-                    behavior with warnings, message deletion,
-                    timeouts, and more.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📁
-                </div>
-
-                <h3>
-                    Incident Tracking
-                </h3>
-
-                <p>
-                    Security incidents can be tracked with
-                    unique case IDs for easier moderation.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    👁️
-                </div>
-
-                <h3>
-                    Continuous Monitoring
-                </h3>
-
-                <p>
-                    PRIME actively monitors server activity
-                    while remaining ready to respond to
-                    potential threats.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         STATUS
-    ========================== -->
-
-    <section
-        id="status"
-        class="status-section"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                PRIME System Status
-            </h2>
-
-            <p>
-                Your server's automated security system.
-            </p>
-
-        </div>
-
-
-        <div class="status-card">
-
-            <h3 class="status-online">
-                🟢 SYSTEM OPERATIONAL
-            </h3>
-
-
-            <p>
-                PRIME GUARD is designed to provide continuous
-                automated monitoring and security protection.
-            </p>
-
-
-            <div class="status-grid">
-
-
-                <div class="status-item">
-
-                    <strong>
-                        24/7
-                    </strong>
-
-                    <span>
-                        Protection
-                    </span>
-
-                </div>
-
-
-                <div class="status-item">
-
-                    <strong>
-                        AUTO
-                    </strong>
-
-                    <span>
-                        Security Response
-                    </span>
-
-                </div>
-
-
-                <div class="status-item">
-
-                    <strong>
-                        LIVE
-                    </strong>
-
-                    <span>
-                        Threat Monitoring
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PRICING
-    ========================== -->
-
-    <section
-        id="pricing"
-        class="pricing"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                Simple plans. Serious protection.
-            </h2>
-
-            <p>
-                Start free and upgrade as your Discord
-                community grows.
-            </p>
-
-        </div>
-
-
-        <div class="pricing-grid">
-
-
-            <!-- FREE PLAN -->
-
-            <div class="price-card">
-
-                <h3>
-                    FREE
-                </h3>
-
-
-                <p class="plan-description">
-                    Essential protection for your community.
-                </p>
-
-
-                <div class="price">
-
-                    $0
-
-                    <span>
-                        / month
-                    </span>
-
-                </div>
-
-
-                <ul>
-
-                    <li>
-                        Basic security monitoring
-                    </li>
-
-                    <li>
-                        Raid detection
-                    </li>
-
-                    <li>
-                        Anti-spam protection
-                    </li>
-
-                    <li>
-                        Basic security commands
-                    </li>
-
-                    <li>
-                        Automated incident tracking
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#"
-                    class="primary-button free-plan-button"
-                >
-                    Add to Discord
-                </a>
-
-            </div>
-
-
-            <!-- PRIME PLUS -->
-
-            <div class="price-card featured">
-
-                <div class="popular-badge">
-                    MOST POPULAR
-                </div>
-
-
-                <h3>
-                    PRIME PLUS
-                </h3>
-
-
-                <p class="plan-description">
-                    Advanced protection for growing
-                    communities.
-                </p>
-
-
-                <div class="price">
-
-                    $2.99
-
-                    <span>
-                        / month
-                    </span>
-
-                </div>
-
-
-                <ul>
-
-                    <li>
-                        Everything in FREE
-                    </li>
-
-                    <li>
-                        Advanced anti-spam protection
-                    </li>
-
-                    <li>
-                        Enhanced threat monitoring
-                    </li>
-
-                    <li>
-                        Advanced security alerts
-                    </li>
-
-                    <li>
-                        Automatic PRIME PLUS role
-                    </li>
-
-                    <li>
-                        Premium security features
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#"
-                    class="primary-button plus-plan-button"
-                >
-                    Choose PLUS
-                </a>
-
-            </div>
-
-
-            <!-- PRIME PRO -->
-
-            <div class="price-card">
-
-                <h3>
-                    PRIME PRO
-                </h3>
-
-
-                <p class="plan-description">
-                    Maximum protection for serious
-                    communities.
-                </p>
-
-
-                <div class="price">
-
-                    $5.99
-
-                    <span>
-                        / month
-                    </span>
-
-                </div>
-
-
-                <ul>
-
-                    <li>
-                        Everything in PRIME PLUS
-                    </li>
-
-                    <li>
-                        Advanced raid protection
-                    </li>
-
-                    <li>
-                        Priority security alerts
-                    </li>
-
-                    <li>
-                        Advanced incident history
-                    </li>
-
-                    <li>
-                        Automatic PRIME PRO role
-                    </li>
-
-                    <li>
-                        Future premium features
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#"
-                    class="primary-button pro-plan-button"
-                >
-                    Choose PRO
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <strong>
-            🛡️ PRIME GUARD
-        </strong>
-
-        <br>
-
-        Always Watching. Always Protecting.
-
-        <br><br>
-
-        © 2026 PRIME GUARD
-
-    </footer>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script src="script.js"></script>
-
-
-</body>
-
-</html>
+      setTimeout(() => {
+        connectDiscord();
+      }, 500);
+    });
+  }
+
+
+  // PRO plan button
+  const proButton = document.querySelector(
+    "#pro-button, .pro-button"
+  );
+
+  if (proButton) {
+    proButton.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      choosePlan("pro");
+
+      setTimeout(() => {
+        connectDiscord();
+      }, 500);
+    });
+  }
+
+});
