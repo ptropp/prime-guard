@@ -1,68 +1,280 @@
-const CLIENT_ID = "154008590462025738";
-const REDIRECT_URI = "https://ptrop.github.io/prime-guard/";
-const SCOPES = "identify guilds";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const discordLoginURL =
-  "https://discord.com/oauth2/authorize" +
-  "?client_id=" + CLIENT_ID +
-  "&response_type=code" +
-  "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
-  "&scope=" + encodeURIComponent(SCOPES);
+    <title>PRIME GUARD | Discord Security</title>
 
-function connectDiscord() {
-  window.location.href = discordLoginURL;
-}
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function choosePlan(plan) {
-  localStorage.setItem("primeGuardPlan", plan);
+<body>
 
-  if (plan === "free") {
-    connectDiscord();
-  } else {
-    alert(
-      plan === "plus"
-        ? "PRIME PLUS payment setup is coming next."
-        : "PRIME PRO payment setup is coming next."
-    );
-  }
-}
+    <nav>
+        <div class="logo">
+            🛡️ PRIME GUARD
+        </div>
 
-document.addEventListener("DOMContentLoaded", function () {
-  const addToDiscordButtons = document.querySelectorAll(
-    ".add-button, .primary-button"
-  );
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#status">Status</a>
+            <a href="#pricing">Pricing</a>
+        </div>
 
-  addToDiscordButtons.forEach(function (button) {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      connectDiscord();
-    });
-  });
+        <button class="nav-button add-button">
+            Get Started
+        </button>
+    </nav>
 
-  const freeButton = document.querySelector(".free-button");
 
-  if (freeButton) {
-    freeButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      choosePlan("free");
-    });
-  }
+    <main>
 
-  const plusButton = document.querySelector(".plus-button");
+        <!-- HERO -->
 
-  if (plusButton) {
-    plusButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      choosePlan("plus");
-    });
-  }
+        <section class="hero">
 
-  const proButton = document.querySelector(".pro-button");
+            <div class="badge">
+                🟢 PRIME GUARD SYSTEM ONLINE
+            </div>
 
-  if (proButton) {
-    proButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      choosePlan("pro");
-    });
-  }
-});
+            <h1>
+                Always Watching.<br>
+                <span>Always Protecting.</span>
+            </h1>
+
+            <p>
+                Advanced Discord security and automated protection
+                built to keep your community safe.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-button add-button">
+                    Add to Discord
+                </button>
+
+                <a href="#features" class="secondary-button">
+                    Explore Features
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section id="features" class="features">
+
+            <h2>Built to Protect Your Community</h2>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <h3>🛡️ Advanced Protection</h3>
+                    <p>
+                        Monitor suspicious activity and help protect
+                        your Discord community.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>⚡ Fast Detection</h3>
+                    <p>
+                        Detect potential raids, spam, and unusual
+                        activity quickly.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📊 Security Tracking</h3>
+                    <p>
+                        Track security events and keep an eye on
+                        your community.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🔔 Smart Alerts</h3>
+                    <p>
+                        Receive alerts when important security
+                        events happen.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATUS -->
+
+        <section id="status" class="status-section">
+
+            <div class="status-card">
+
+                <div>
+                    <h2>System Status</h2>
+                    <p>PRIME GUARD security systems are operational.</p>
+                </div>
+
+                <div class="status-online">
+                    ● ALL SYSTEMS OPERATIONAL
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRICING -->
+
+        <section id="pricing" class="pricing">
+
+            <h2>Simple plans. Serious protection.</h2>
+
+            <p class="pricing-subtitle">
+                Start free and upgrade as your Discord community grows.
+            </p>
+
+
+            <div class="pricing-grid">
+
+                <!-- FREE -->
+
+                <div class="plan-card">
+
+                    <h3>FREE</h3>
+
+                    <p class="plan-description">
+                        Essential protection for your community.
+                    </p>
+
+                    <div class="price">
+                        $0 <span>/ month</span>
+                    </div>
+
+                    <ul>
+                        <li>✓ Basic security monitoring</li>
+                        <li>✓ Raid detection</li>
+                        <li>✓ Anti-spam protection</li>
+                        <li>✓ Basic security commands</li>
+                        <li>✓ Automated incident tracking</li>
+                    </ul>
+
+                    <button class="plan-button free-button">
+                        Add to Discord
+                    </button>
+
+                </div>
+
+
+                <!-- PLUS -->
+
+                <div class="plan-card popular">
+
+                    <div class="popular-label">
+                        MOST POPULAR
+                    </div>
+
+                    <h3>PRIME PLUS</h3>
+
+                    <p class="plan-description">
+                        Advanced protection for growing communities.
+                    </p>
+
+                    <div class="price">
+                        $2.99 <span>/ month</span>
+                    </div>
+
+                    <ul>
+                        <li>✓ Everything in FREE</li>
+                        <li>✓ Advanced anti-spam protection</li>
+                        <li>✓ Enhanced threat monitoring</li>
+                        <li>✓ Advanced security alerts</li>
+                        <li>✓ Automatic PRIME PLUS role</li>
+                        <li>✓ Premium security features</li>
+                    </ul>
+
+                    <button class="plan-button plus-button">
+                        Choose PLUS
+                    </button>
+
+                </div>
+
+
+                <!-- PRO -->
+
+                <div class="plan-card">
+
+                    <h3>PRIME PRO</h3>
+
+                    <p class="plan-description">
+                        Maximum protection for serious communities.
+                    </p>
+
+                    <div class="price">
+                        $5.99 <span>/ month</span>
+                    </div>
+
+                    <ul>
+                        <li>✓ Everything in PRIME PLUS</li>
+                        <li>✓ Advanced raid protection</li>
+                        <li>✓ Priority security alerts</li>
+                        <li>✓ Advanced incident history</li>
+                        <li>✓ Automatic PRIME PRO role</li>
+                        <li>✓ Future premium features</li>
+                    </ul>
+
+                    <button class="plan-button pro-button">
+                        Choose PRO
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PURCHASE MESSAGE -->
+
+    <div id="messageModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button id="closeModal" class="close-button">
+                ×
+            </button>
+
+            <h2 id="modalTitle">PRIME GUARD</h2>
+
+            <p id="modalText"></p>
+
+            <button id="modalButton" class="primary-button">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <strong>🛡️ PRIME GUARD</strong>
+
+        <p>
+            Advanced Discord security and automated protection.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
