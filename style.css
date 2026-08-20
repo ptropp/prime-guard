@@ -23,25 +23,35 @@ button {
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     width: 100%;
-    padding: 20px 8%;
+    padding: 14px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #0b0f17;
+    background: rgba(11, 15, 23, 0.96);
     border-bottom: 1px solid #202938;
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(10px);
 }
 
 .logo {
-    font-weight: 800;
-    font-size: 20px;
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 185px;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -80,7 +90,9 @@ nav {
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 620px;
@@ -130,10 +142,17 @@ nav {
     border-radius: 8px;
     border: 1px solid #2a3548;
     color: white;
+    transition: 0.2s;
+}
+
+.secondary-button:hover {
+    background: #131a25;
 }
 
 
-/* FEATURES */
+/* =========================
+   FEATURES
+========================= */
 
 .features {
     padding: 100px 8%;
@@ -159,6 +178,12 @@ nav {
     border: 1px solid #263247;
     padding: 28px;
     border-radius: 12px;
+    transition: 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #5b6fe8;
 }
 
 .feature-card h3 {
@@ -171,7 +196,9 @@ nav {
 }
 
 
-/* STATUS */
+/* =========================
+   STATUS
+========================= */
 
 .status-section {
     padding: 60px 8%;
@@ -196,10 +223,13 @@ nav {
 .status-online {
     color: #5fe39a;
     font-size: 13px;
+    font-weight: bold;
 }
 
 
-/* PRICING */
+/* =========================
+   PRICING
+========================= */
 
 .pricing {
     padding: 100px 8%;
@@ -223,10 +253,16 @@ nav {
     border: 1px solid #263247;
     padding: 32px;
     border-radius: 14px;
+    transition: 0.2s;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
 }
 
 .plan-card.popular {
     border: 2px solid #5b6fe8;
+    box-shadow: 0 0 35px rgba(91, 111, 232, 0.15);
 }
 
 .popular-label {
@@ -267,17 +303,15 @@ nav {
     color: #b4bdcc;
 }
 
-.plan-card li::first-letter {
-    color: #5fe39a;
-}
-
 .plan-button {
     width: 100%;
     margin-top: 20px;
 }
 
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -321,7 +355,9 @@ nav {
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     border-top: 1px solid #202938;
@@ -330,17 +366,46 @@ footer {
     color: #9ba6b8;
 }
 
-footer strong {
-    color: white;
+.footer-logo {
+    width: 260px;
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto 25px;
+    object-fit: contain;
+}
+
+.created-by {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6f7b90;
+}
+
+.created-by strong {
+    color: #aeb8ff;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 850px) {
 
+    nav {
+        padding: 12px 5%;
+    }
+
+    .logo img {
+        width: 145px;
+    }
+
     .nav-links {
         display: none;
+    }
+
+    .nav-button {
+        padding: 10px 16px;
     }
 
     .hero h1 {
@@ -356,6 +421,39 @@ footer strong {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .logo img {
+        width: 120px;
+    }
+
+    .nav-button {
+        font-size: 12px;
+        padding: 9px 12px;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 70px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
     }
 
 }
