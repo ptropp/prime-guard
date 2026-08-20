@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
@@ -9,103 +8,153 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>PRIME | Responsive Intelligence Management Engine</title>
-
     <meta
         name="description"
-        content="PRIME is a responsive intelligence management engine built to help Discord communities monitor activity, detect threats, and stay protected."
+        content="PRIME — responsive intelligence and automated Discord community management."
+    >
+
+    <title>PRIME | Responsive Intelligence</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
     >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-    <!-- BACKGROUND EFFECTS -->
-
+    <!-- Background -->
     <div class="background-grid"></div>
-    <div class="background-glow glow-one"></div>
-    <div class="background-glow glow-two"></div>
+    <div class="red-glow glow-one"></div>
+    <div class="red-glow glow-two"></div>
 
 
     <!-- NAVIGATION -->
 
-    <nav class="navbar">
+    <header class="header">
 
-        <a href="#" class="brand">
+        <nav class="navbar">
 
-            <img
-                src="prime-logo.png"
-                alt="PRIME"
-                class="brand-logo"
+            <a href="#" class="brand">
+
+                <img
+                    src="prime-logo.png"
+                    alt="PRIME"
+                    class="nav-logo"
+                >
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="#platform">Platform</a>
+
+                <a href="#features">Features</a>
+
+                <a href="#pricing">Plans</a>
+
+                <a href="#status">Status</a>
+
+            </div>
+
+
+            <button
+                class="nav-cta add-button"
             >
+                Get Started
+            </button>
 
-        </a>
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation"
+            >
+                <span></span>
+                <span></span>
+            </button>
+
+        </nav>
 
 
-        <div class="nav-links">
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
 
-            <a href="#features">Platform</a>
+            <a href="#platform">Platform</a>
 
-            <a href="#status">Status</a>
+            <a href="#features">Features</a>
 
             <a href="#pricing">Plans</a>
 
+            <a href="#status">Status</a>
+
+            <button class="add-button">
+                Get Started
+            </button>
+
         </div>
 
-
-        <button class="nav-button add-button">
-            Get Started
-        </button>
-
-    </nav>
+    </header>
 
 
-    <!-- MOBILE NAV -->
+    <!-- MAIN -->
 
     <main>
 
 
         <!-- HERO -->
 
-        <section class="hero">
+        <section class="hero" id="platform">
 
             <div class="hero-content">
 
-
                 <div class="eyebrow">
 
-                    <span class="live-dot"></span>
+                    <span class="status-dot"></span>
 
-                    INTELLIGENCE SYSTEM ONLINE
+                    RESPONSIVE INTELLIGENCE
 
                 </div>
 
 
                 <h1>
 
-                    Security built for
-
-                    <span>what happens next.</span>
+                    Intelligence for the communities
+                    <span>that never slow down.</span>
 
                 </h1>
 
 
                 <p class="hero-description">
 
-                    PRIME gives Discord communities a smarter way to
-                    monitor activity, identify potential threats, and
-                    respond before problems escalate.
+                    PRIME is a responsive intelligence platform built
+                    to help Discord communities detect threats,
+                    manage activity, and respond with confidence.
 
                 </p>
 
 
                 <div class="hero-actions">
 
-                    <button class="primary-button add-button">
+                    <button
+                        class="primary-button add-button"
+                    >
 
-                        Add PRIME
+                        Get Started
 
                         <span class="button-arrow">→</span>
 
@@ -124,150 +173,197 @@
                 </div>
 
 
-                <div class="hero-stats">
+                <div class="hero-meta">
 
+                    <div>
 
-                    <div class="stat">
+                        <strong>24/7</strong>
 
-                        <span class="stat-value">24/7</span>
-
-                        <span class="stat-label">
-                            Continuous monitoring
-                        </span>
+                        <span>Monitoring</span>
 
                     </div>
 
 
-                    <div class="stat">
+                    <div>
 
-                        <span class="stat-value">REAL-TIME</span>
+                        <strong>FAST</strong>
 
-                        <span class="stat-label">
-                            Activity intelligence
-                        </span>
+                        <span>Response</span>
 
                     </div>
 
 
-                    <div class="stat">
+                    <div>
 
-                        <span class="stat-value">PRIME</span>
+                        <strong>SMART</strong>
 
-                        <span class="stat-label">
-                            Security infrastructure
-                        </span>
+                        <span>Protection</span>
 
                     </div>
-
 
                 </div>
-
 
             </div>
 
 
             <div class="hero-visual">
 
+                <div class="intel-window">
 
-                <div class="system-card">
+                    <div class="window-header">
 
+                        <div class="window-title">
 
-                    <div class="system-card-top">
+                            <span class="window-dot"></span>
 
-                        <div>
-
-                            <span class="system-label">
-                                PRIME SECURITY ENGINE
-                            </span>
-
-                            <h3>
-                                Community Overview
-                            </h3>
+                            PRIME INTELLIGENCE
 
                         </div>
 
 
-                        <div class="system-status">
-
-                            <span class="status-indicator"></span>
-
-                            OPERATIONAL
-
+                        <div class="window-status">
+                            SYSTEM ACTIVE
                         </div>
 
                     </div>
 
 
-                    <div class="activity-lines">
+                    <div class="intel-content">
 
 
-                        <div class="activity-line">
+                        <div class="intel-top">
 
-                            <span class="line-dot"></span>
+                            <div>
 
-                            <span>
-                                Activity monitoring active
-                            </span>
+                                <span class="small-label">
+                                    LIVE ACTIVITY
+                                </span>
 
-                            <span class="line-status">
-                                ACTIVE
-                            </span>
+                                <h2>Community Overview</h2>
 
-                        </div>
+                            </div>
 
 
-                        <div class="activity-line">
-
-                            <span class="line-dot"></span>
-
-                            <span>
-                                Threat analysis running
-                            </span>
-
-                            <span class="line-status">
-                                ACTIVE
+                            <span class="live-indicator">
+                                LIVE
                             </span>
 
                         </div>
 
 
-                        <div class="activity-line">
+                        <div class="metric-grid">
 
-                            <span class="line-dot"></span>
 
-                            <span>
-                                Incident tracking ready
-                            </span>
+                            <div class="metric-card">
 
-                            <span class="line-status">
-                                READY
-                            </span>
+                                <span>
+                                    SECURITY EVENTS
+                                </span>
+
+                                <strong>128</strong>
+
+                                <small>Tracked today</small>
+
+                            </div>
+
+
+                            <div class="metric-card">
+
+                                <span>
+                                    THREAT LEVEL
+                                </span>
+
+                                <strong class="green-text">
+                                    LOW
+                                </strong>
+
+                                <small>Systems stable</small>
+
+                            </div>
+
+
+                            <div class="metric-card">
+
+                                <span>
+                                    RESPONSE TIME
+                                </span>
+
+                                <strong>0.4s</strong>
+
+                                <small>Average</small>
+
+                            </div>
 
                         </div>
 
+
+                        <div class="activity-panel">
+
+                            <div class="activity-header">
+
+                                <span>
+                                    RECENT ACTIVITY
+                                </span>
+
+                                <span>
+                                    VIEW ALL
+                                </span>
+
+                            </div>
+
+
+                            <div class="activity-row">
+
+                                <div class="activity-icon">
+                                    ↗
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Suspicious activity analyzed
+                                    </strong>
+
+                                    <span>
+                                        Automated response completed
+                                    </span>
+
+                                </div>
+
+                                <time>
+                                    NOW
+                                </time>
+
+                            </div>
+
+
+                            <div class="activity-row">
+
+                                <div class="activity-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Community check completed
+                                    </strong>
+
+                                    <span>
+                                        No action required
+                                    </span>
+
+                                </div>
+
+                                <time>
+                                    2M AGO
+                                </time>
+
+                            </div>
+
+                        </div>
 
                     </div>
-
-
-                    <div class="security-meter">
-
-                        <div class="meter-header">
-
-                            <span>SECURITY COVERAGE</span>
-
-                            <strong>100%</strong>
-
-                        </div>
-
-
-                        <div class="meter-bar">
-
-                            <div class="meter-fill"></div>
-
-                        </div>
-
-                    </div>
-
 
                 </div>
 
@@ -276,48 +372,66 @@
         </section>
 
 
+
         <!-- TRUST BAR -->
 
-        <section class="trust-section">
+        <section class="trust-bar">
 
             <p>
-                BUILT FOR COMMUNITIES THAT TAKE SECURITY SERIOUSLY
+                BUILT FOR MODERN DISCORD COMMUNITIES
             </p>
 
-            <div class="trust-line"></div>
+            <div class="trust-items">
+
+                <span>SECURITY</span>
+
+                <span class="separator"></span>
+
+                <span>INTELLIGENCE</span>
+
+                <span class="separator"></span>
+
+                <span>AUTOMATION</span>
+
+                <span class="separator"></span>
+
+                <span>RESPONSE</span>
+
+            </div>
 
         </section>
+
 
 
         <!-- FEATURES -->
 
         <section
+            class="section features-section"
             id="features"
-            class="features-section"
         >
 
+            <div class="section-heading">
 
-            <div class="section-header">
+                <div>
 
-                <div class="section-tag">
-                    PLATFORM
+                    <span class="section-label">
+                        CAPABILITIES
+                    </span>
+
+                    <h2>
+                        Built to understand
+                        <br>
+                        what matters.
+                    </h2>
+
                 </div>
-
-
-                <h2>
-
-                    One system.
-
-                    <span>Full visibility.</span>
-
-                </h2>
 
 
                 <p>
 
-                    PRIME brings critical security tools together
-                    so your moderation team can spend less time
-                    reacting and more time running their community.
+                    PRIME combines automation and responsive
+                    intelligence to help communities stay ahead
+                    of activity as it happens.
 
                 </p>
 
@@ -327,253 +441,198 @@
             <div class="feature-grid">
 
 
-                <!-- FEATURE 1 -->
-
                 <article class="feature-card feature-large">
 
-                    <div class="feature-number">
+                    <div class="card-number">
                         01
                     </div>
-
-
-                    <h3>
-                        Advanced Monitoring
-                    </h3>
-
-
-                    <p>
-
-                        Track important activity across your
-                        community and keep potential security
-                        issues visible.
-
-                    </p>
-
-
-                    <div class="feature-footer">
-
-                        <span>
-                            LIVE ACTIVITY INTELLIGENCE
-                        </span>
-
-                        <span>→</span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- FEATURE 2 -->
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        02
-                    </div>
-
 
                     <h3>
                         Threat Detection
                     </h3>
 
-
                     <p>
 
-                        Identify suspicious activity,
-                        unusual behavior, raids, and
-                        potential spam before it spreads.
+                        Monitor unusual activity and identify
+                        potential threats before they become
+                        larger problems.
 
                     </p>
+
+                    <span class="card-arrow">
+                        ↗
+                    </span>
 
                 </article>
 
 
-                <!-- FEATURE 3 -->
 
                 <article class="feature-card">
 
-                    <div class="feature-number">
+                    <div class="card-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Smart Automation
+                    </h3>
+
+                    <p>
+
+                        Reduce repetitive moderation tasks with
+                        systems designed to respond automatically.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <article class="feature-card">
+
+                    <div class="card-number">
                         03
                     </div>
 
-
                     <h3>
-                        Intelligent Alerts
+                        Live Intelligence
                     </h3>
-
 
                     <p>
 
-                        Get notified when important events
-                        require attention from your
-                        moderation team.
+                        Keep track of important community activity
+                        with responsive event monitoring.
 
                     </p>
+
+                    <span class="card-arrow">
+                        ↗
+                    </span>
 
                 </article>
 
 
-                <!-- FEATURE 4 -->
 
                 <article class="feature-card">
 
-                    <div class="feature-number">
+                    <div class="card-number">
                         04
                     </div>
 
-
                     <h3>
-                        Incident History
+                        Instant Alerts
                     </h3>
-
 
                     <p>
 
-                        Maintain a clear record of important
-                        security events and community
-                        incidents.
+                        Receive clear notifications when your
+                        attention is needed.
 
                     </p>
 
-                </article>
+                    <span class="card-arrow">
+                        ↗
+                    </span>
 
+                </article>
 
             </div>
 
         </section>
+
 
 
         <!-- STATUS -->
 
         <section
+            class="section system-section"
             id="status"
-            class="status-section"
         >
 
-
-            <div class="status-panel">
-
-
-                <div class="status-left">
+            <div class="system-panel">
 
 
-                    <div class="section-tag">
-                        SYSTEM STATUS
-                    </div>
+                <div class="system-left">
 
+                    <span class="section-label">
+                        NETWORK STATUS
+                    </span>
 
                     <h2>
-                        PRIME is operational.
+                        Everything is running
+                        <span>normally.</span>
                     </h2>
 
-
-                    <p>
-
-                        Core monitoring and intelligence
-                        systems are currently online.
-
-                    </p>
-
-
                 </div>
 
 
-                <div class="status-right">
+                <div class="system-right">
 
+                    <div class="system-status-row">
 
-                    <div class="large-status">
+                        <div class="system-status-main">
 
-                        <span class="large-status-dot"></span>
+                            <span class="large-status-dot"></span>
 
-                        ALL SYSTEMS
+                            <div>
 
-                        <strong>OPERATIONAL</strong>
+                                <strong>
+                                    All systems operational
+                                </strong>
+
+                                <span>
+                                    PRIME services are online
+                                </span>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="status-details">
+                    <div class="uptime">
 
+                        <span>UPTIME</span>
 
-                        <div>
-
-                            <span>
-                                MONITORING
-                            </span>
-
-                            <strong>
-                                ONLINE
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                INTELLIGENCE
-                            </span>
-
-                            <strong>
-                                ONLINE
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                ALERTS
-                            </span>
-
-                            <strong>
-                                ONLINE
-                            </strong>
-
-                        </div>
-
+                        <strong>99.99%</strong>
 
                     </div>
 
-
                 </div>
-
 
             </div>
 
         </section>
 
 
+
         <!-- PRICING -->
 
         <section
+            class="section pricing-section"
             id="pricing"
-            class="pricing-section"
         >
 
+            <div class="pricing-header">
 
-            <div class="section-header">
-
-                <div class="section-tag">
-                    PLANS
-                </div>
-
+                <span class="section-label">
+                    ACCESS LEVELS
+                </span>
 
                 <h2>
-
-                    Protection that
-
-                    <span>scales with you.</span>
-
+                    Choose your level of
+                    <span>intelligence.</span>
                 </h2>
-
 
                 <p>
 
-                    Start with the essentials and unlock
-                    more advanced PRIME capabilities as
-                    your community grows.
+                    Start with the essentials and scale as your
+                    community grows.
 
                 </p>
 
@@ -585,30 +644,30 @@
 
                 <!-- FREE -->
 
-                <div class="plan-card">
-
+                <article class="pricing-card">
 
                     <div class="plan-top">
 
-                        <span class="plan-type">
-                            PRIME FREE
-                        </span>
+                        <div>
 
-                        <span class="plan-level">
-                            ENTRY
+                            <span class="plan-tag">
+                                ESSENTIAL
+                            </span>
+
+                            <h3>FREE</h3>
+
+                        </div>
+
+                        <span class="plan-number">
+                            01
                         </span>
 
                     </div>
 
 
-                    <h3>
-                        Free
-                    </h3>
-
-
                     <div class="price">
 
-                        $0
+                        <strong>$0</strong>
 
                         <span>
                             / month
@@ -617,10 +676,9 @@
                     </div>
 
 
-                    <p class="plan-description">
+                    <p class="plan-intro">
 
-                        Essential protection for
-                        smaller communities.
+                        Core tools for smaller communities.
 
                     </p>
 
@@ -640,60 +698,56 @@
                         </li>
 
                         <li>
-                            Basic security commands
-                        </li>
-
-                        <li>
-                            Incident tracking
+                            Security commands
                         </li>
 
                     </ul>
 
 
                     <button
-                        class="plan-button free-button"
-                        data-plan="FREE"
+                        class="plan-button free-button add-button"
                     >
-
                         Add to Discord
-
                     </button>
 
+                </article>
 
-                </div>
 
 
                 <!-- PLUS -->
 
-                <div class="plan-card featured-plan">
+                <article class="pricing-card featured-plan">
+
+                    <div class="featured-line"></div>
 
 
-                    <div class="recommended">
-                        RECOMMENDED
+                    <div class="popular-tag">
+                        MOST POPULAR
                     </div>
 
 
                     <div class="plan-top">
 
-                        <span class="plan-type">
-                            PRIME PLUS
-                        </span>
+                        <div>
 
-                        <span class="plan-level">
-                            ADVANCED
+                            <span class="plan-tag">
+                                ADVANCED
+                            </span>
+
+                            <h3>PRIME PLUS</h3>
+
+                        </div>
+
+                        <span class="plan-number">
+                            02
                         </span>
 
                     </div>
 
 
-                    <h3>
-                        Plus
-                    </h3>
-
-
                     <div class="price">
 
-                        $2.99
+                        <strong>$2.99</strong>
 
                         <span>
                             / month
@@ -702,10 +756,10 @@
                     </div>
 
 
-                    <p class="plan-description">
+                    <p class="plan-intro">
 
-                        Advanced protection for
-                        growing communities.
+                        Enhanced intelligence for active
+                        communities.
 
                     </p>
 
@@ -717,15 +771,15 @@
                         </li>
 
                         <li>
-                            Enhanced anti-spam
+                            Advanced anti-spam
                         </li>
 
                         <li>
-                            Advanced threat monitoring
+                            Enhanced threat monitoring
                         </li>
 
                         <li>
-                            Intelligent alerts
+                            Advanced security alerts
                         </li>
 
                         <li>
@@ -737,43 +791,42 @@
 
                     <button
                         class="plan-button plus-button"
-                        data-plan="PLUS"
+                        data-plan="PRIME PLUS"
+                        data-price="$2.99/month"
                     >
-
                         Choose PLUS
-
                     </button>
 
+                </article>
 
-                </div>
 
 
                 <!-- PRO -->
 
-                <div class="plan-card">
-
+                <article class="pricing-card">
 
                     <div class="plan-top">
 
-                        <span class="plan-type">
-                            PRIME PRO
-                        </span>
+                        <div>
 
-                        <span class="plan-level">
-                            MAXIMUM
+                            <span class="plan-tag">
+                                MAXIMUM
+                            </span>
+
+                            <h3>PRIME PRO</h3>
+
+                        </div>
+
+                        <span class="plan-number">
+                            03
                         </span>
 
                     </div>
 
 
-                    <h3>
-                        Pro
-                    </h3>
-
-
                     <div class="price">
 
-                        $5.99
+                        <strong>$5.99</strong>
 
                         <span>
                             / month
@@ -782,10 +835,10 @@
                     </div>
 
 
-                    <p class="plan-description">
+                    <p class="plan-intro">
 
-                        Maximum protection for
-                        serious communities.
+                        Maximum coverage for serious
+                        communities.
 
                     </p>
 
@@ -793,7 +846,7 @@
                     <ul class="plan-features">
 
                         <li>
-                            Everything in PLUS
+                            Everything in PRIME PLUS
                         </li>
 
                         <li>
@@ -805,11 +858,11 @@
                         </li>
 
                         <li>
-                            Extended incident history
+                            Advanced incident history
                         </li>
 
                         <li>
-                            Future PRO capabilities
+                            PRIME PRO access
                         </li>
 
                     </ul>
@@ -817,135 +870,70 @@
 
                     <button
                         class="plan-button pro-button"
-                        data-plan="PRO"
+                        data-plan="PRIME PRO"
+                        data-price="$5.99/month"
                     >
-
                         Choose PRO
-
                     </button>
 
-
-                </div>
-
+                </article>
 
             </div>
-
 
         </section>
 
 
-        <!-- FINAL CTA -->
 
-        <section class="cta-section">
+        <!-- CTA -->
+
+        <section class="final-cta">
+
+            <div class="final-cta-content">
+
+                <span class="section-label">
+                    READY WHEN YOU ARE
+                </span>
+
+                <h2>
+                    Give your community
+                    <span>an advantage.</span>
+                </h2>
+
+                <p>
+
+                    Add PRIME and start building a more
+                    responsive community.
+
+                </p>
 
 
-            <div class="cta-box">
+                <button
+                    class="primary-button add-button"
+                >
 
+                    Add PRIME to Discord
 
-                <div>
-
-                    <span class="section-tag">
-                        GET STARTED
+                    <span class="button-arrow">
+                        →
                     </span>
-
-
-                    <h2>
-                        Your community deserves better protection.
-                    </h2>
-
-
-                </div>
-
-
-                <button class="primary-button add-button">
-
-                    Add PRIME
-
-                    <span class="button-arrow">→</span>
 
                 </button>
 
-
             </div>
-
 
         </section>
 
-
     </main>
 
-
-    <!-- MODAL -->
-
-    <div
-        id="messageModal"
-        class="modal hidden"
-    >
-
-
-        <div class="modal-overlay"></div>
-
-
-        <div class="modal-content">
-
-
-            <button
-                id="closeModal"
-                class="close-button"
-                aria-label="Close"
-            >
-                ×
-            </button>
-
-
-            <div class="modal-accent"></div>
-
-
-            <span
-                id="modalTag"
-                class="modal-tag"
-            >
-                PRIME
-            </span>
-
-
-            <h2 id="modalTitle">
-                Welcome to PRIME
-            </h2>
-
-
-            <p id="modalText">
-                Connecting you to PRIME.
-            </p>
-
-
-            <button
-                id="modalButton"
-                class="primary-button"
-            >
-                Continue
-
-                <span class="button-arrow">→</span>
-
-            </button>
-
-
-        </div>
-
-
-    </div>
 
 
     <!-- FOOTER -->
 
     <footer>
 
-
         <div class="footer-top">
 
-
-            <div class="footer-brand">
-
+            <div>
 
                 <img
                     src="prime-logo.png"
@@ -953,12 +941,10 @@
                     class="footer-logo"
                 >
 
-
                 <p>
 
-                    Responsive Intelligence Management Engine.
-
-                    Built for smarter Discord security.
+                    Ptrop's Responsive Intelligence
+                    Management Engine.
 
                 </p>
 
@@ -967,21 +953,23 @@
 
             <div class="footer-links">
 
-
-                <a href="#features">
+                <a href="#platform">
                     Platform
                 </a>
 
-                <a href="#status">
-                    Status
+                <a href="#features">
+                    Features
                 </a>
 
                 <a href="#pricing">
                     Plans
                 </a>
 
-            </div>
+                <a href="#status">
+                    Status
+                </a>
 
+            </div>
 
         </div>
 
@@ -994,18 +982,74 @@
 
 
             <span>
-                RESPONSIVE INTELLIGENCE MANAGEMENT ENGINE
+                RESPONSIVE INTELLIGENCE
             </span>
-
 
         </div>
 
-
     </footer>
+
+
+
+    <!-- PLAN MODAL -->
+
+    <div
+        class="modal hidden"
+        id="planModal"
+    >
+
+        <div class="modal-backdrop"></div>
+
+
+        <div
+            class="modal-box"
+            role="dialog"
+            aria-modal="true"
+        >
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <span class="section-label">
+                PRIME ACCESS
+            </span>
+
+
+            <h2 id="modalTitle">
+                PRIME
+            </h2>
+
+
+            <p id="modalText">
+                Choose how you would like to continue.
+            </p>
+
+
+            <div class="modal-price" id="modalPrice"></div>
+
+
+            <button
+                class="primary-button"
+                id="modalContinue"
+            >
+                Continue
+                <span class="button-arrow">
+                    →
+                </span>
+            </button>
+
+        </div>
+
+    </div>
 
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
