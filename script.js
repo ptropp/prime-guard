@@ -1,314 +1,409 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================================================
+   PRIME WEBSITE SCRIPT
+   Created by Ptrop
+   ========================================================= */
 
-    const modal = document.getElementById("messageModal");
 
-    const closeModal = document.getElementById("closeModal");
+/*
+    DISCORD OAUTH SETTINGS
 
-    const modalButton = document.getElementById("modalButton");
+    This is your Discord Application ID.
+*/
 
-    const modalTitle = document.getElementById("modalTitle");
+const CLIENT_ID = "1540085904620253738";
 
-    const modalText = document.getElementById("modalText");
 
-    const modalTag = document.getElementById("modalTag");
+/*
+    IMPORTANT:
 
+    This must match the Redirect URL
+    you add inside the Discord Developer Portal.
+*/
 
-    // -----------------------------
-    // DISCORD CONFIGURATION
-    // -----------------------------
+const REDIRECT_URI =
+    "https://ptrop.github.io/prime-guard/";
 
-    const CLIENT_ID = "154008590462025738";
 
-    const REDIRECT_URI =
-        window.location.origin + "/prime-guard/";
+const DISCORD_SCOPE =
+    "identify guilds";
 
-    const DISCORD_SCOPE =
-        "identify guilds";
 
+/* =========================================================
+   GET STARTED / DISCORD LOGIN
+   ========================================================= */
 
-    // -----------------------------
-    // MODAL FUNCTIONS
-    // -----------------------------
+function connectDiscord() {
 
-    function openModal(title, text, tag) {
+    const discordLoginURL =
+        "https://discord.com/oauth2/authorize" +
+        "?client_id=" + encodeURIComponent(CLIENT_ID) +
+        "&response_type=code" +
+        "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+        "&scope=" + encodeURIComponent(DISCORD_SCOPE);
 
-        modalTitle.textContent = title;
+    window.location.href =
+        discordLoginURL;
+}
 
-        modalText.textContent = text;
 
-        modalTag.textContent = tag;
+const addButtons =
+    document.querySelectorAll(".add-button");
 
-        modal.classList.remove("hidden");
 
-        document.body.style.overflow = "hidden";
+addButtons.forEach((button) => {
 
-    }
+    button.addEventListener("click", () => {
 
-
-    function hideModal() {
-
-        modal.classList.add("hidden");
-
-        document.body.style.overflow = "";
-
-    }
-
-
-    // -----------------------------
-    // ADD TO DISCORD BUTTONS
-    // -----------------------------
-
-    const addButtons =
-        document.querySelectorAll(".add-button");
-
-
-    addButtons.forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const discordLoginURL =
-
-                "https://discord.com/oauth2/authorize" +
-
-                "?client_id=" + CLIENT_ID +
-
-                "&response_type=code" +
-
-                "&redirect_uri=" +
-
-                encodeURIComponent(REDIRECT_URI) +
-
-                "&scope=" +
-
-                encodeURIComponent(DISCORD_SCOPE);
-
-
-            window.location.href =
-                discordLoginURL;
-
-        });
-
-    });
-
-
-    // -----------------------------
-    // PLAN BUTTONS
-    // -----------------------------
-
-    const planButtons =
-        document.querySelectorAll(".plan-button");
-
-
-    planButtons.forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const plan =
-                button.dataset.plan;
-
-
-            if (plan === "FREE") {
-
-                const discordLoginURL =
-
-                    "https://discord.com/oauth2/authorize" +
-
-                    "?client_id=" + CLIENT_ID +
-
-                    "&response_type=code" +
-
-                    "&redirect_uri=" +
-
-                    encodeURIComponent(REDIRECT_URI) +
-
-                    "&scope=" +
-
-                    encodeURIComponent(DISCORD_SCOPE);
-
-
-                window.location.href =
-                    discordLoginURL;
-
-            }
-
-
-            if (plan === "PLUS") {
-
-                openModal(
-
-                    "PRIME PLUS",
-
-                    "PRIME PLUS is being prepared for launch. Pricing and premium access will be available soon.",
-
-                    "PREMIUM ACCESS"
-
-                );
-
-            }
-
-
-            if (plan === "PRO") {
-
-                openModal(
-
-                    "PRIME PRO",
-
-                    "PRIME PRO is being prepared for launch. Maximum security features and premium access will be available soon.",
-
-                    "PREMIUM ACCESS"
-
-                );
-
-            }
-
-        });
-
-    });
-
-
-    // -----------------------------
-    // CLOSE MODAL
-    // -----------------------------
-
-    closeModal.addEventListener("click", hideModal);
-
-
-    modalButton.addEventListener("click", hideModal);
-
-
-    modal.addEventListener("click", (event) => {
-
-        if (
-            event.target === modal ||
-            event.target.classList.contains("modal-overlay")
-        ) {
-
-            hideModal();
-
-        }
-
-    });
-
-
-    // -----------------------------
-    // ESCAPE KEY
-    // -----------------------------
-
-    document.addEventListener("keydown", (event) => {
-
-        if (
-            event.key === "Escape" &&
-            !modal.classList.contains("hidden")
-        ) {
-
-            hideModal();
-
-        }
-
-    });
-
-
-    // -----------------------------
-    // NAVIGATION ACTIVE EFFECT
-    // -----------------------------
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-
-    const navLinks =
-        document.querySelectorAll(".nav-links a");
-
-
-    function updateActiveNavigation() {
-
-        let currentSection = "";
-
-
-        sections.forEach((section) => {
-
-            const sectionTop =
-                section.offsetTop - 180;
-
-
-            if (
-                window.scrollY >= sectionTop
-            ) {
-
-                currentSection =
-                    section.getAttribute("id");
-
-            }
-
-        });
-
-
-        navLinks.forEach((link) => {
-
-            link.classList.remove("active");
-
-
-            if (
-                link.getAttribute("href") ===
-                "#" + currentSection
-            ) {
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation
-    );
-
-
-    // -----------------------------
-    // SCROLL REVEAL
-    // -----------------------------
-
-    const revealElements =
-        document.querySelectorAll(
-
-            ".feature-card, .plan-card, .status-panel, .cta-box"
-
-        );
-
-
-    const observer = new IntersectionObserver(
-
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("revealed");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.12
-        }
-
-    );
-
-
-    revealElements.forEach((element) => {
-
-        observer.observe(element);
+        connectDiscord();
 
     });
 
 });
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
+
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+if (
+    mobileMenuButton &&
+    mobileMenu
+) {
+
+    mobileMenuButton.addEventListener("click", () => {
+
+        mobileMenu.classList.toggle("open");
+
+    });
+
+
+    const mobileLinks =
+        mobileMenu.querySelectorAll("a");
+
+
+    mobileLinks.forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            mobileMenu.classList.remove("open");
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   PRICING MODAL
+   ========================================================= */
+
+const planModal =
+    document.getElementById("planModal");
+
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+
+const modalText =
+    document.getElementById("modalText");
+
+
+const modalPrice =
+    document.getElementById("modalPrice");
+
+
+const modalClose =
+    document.getElementById("modalClose");
+
+
+const modalContinue =
+    document.getElementById("modalContinue");
+
+
+const paidPlanButtons =
+    document.querySelectorAll(
+        ".plus-button, .pro-button"
+    );
+
+
+function openPlanModal(
+    plan,
+    price
+) {
+
+    if (
+        !planModal ||
+        !modalTitle ||
+        !modalText ||
+        !modalPrice
+    ) {
+        return;
+    }
+
+
+    modalTitle.textContent =
+        plan;
+
+
+    modalText.textContent =
+        "You selected " +
+        plan +
+        ". Continue to complete your PRIME access setup.";
+
+
+    modalPrice.textContent =
+        price;
+
+
+    planModal.classList.remove(
+        "hidden"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+function closePlanModal() {
+
+    if (!planModal) {
+        return;
+    }
+
+
+    planModal.classList.add(
+        "hidden"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+paidPlanButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const plan =
+            button.dataset.plan;
+
+
+        const price =
+            button.dataset.price;
+
+
+        openPlanModal(
+            plan,
+            price
+        );
+
+    });
+
+});
+
+
+if (modalClose) {
+
+    modalClose.addEventListener(
+        "click",
+        closePlanModal
+    );
+
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+   ========================================================= */
+
+const modalBackdrop =
+    document.querySelector(
+        ".modal-backdrop"
+    );
+
+
+if (modalBackdrop) {
+
+    modalBackdrop.addEventListener(
+        "click",
+        closePlanModal
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closePlanModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MODAL CONTINUE
+   ========================================================= */
+
+if (modalContinue) {
+
+    modalContinue.addEventListener(
+        "click",
+        () => {
+
+            alert(
+                "Payment setup is not connected yet. PRIME purchase functionality can be added next."
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DISCORD CALLBACK HANDLING
+   ========================================================= */
+
+const urlParameters =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const authorizationCode =
+    urlParameters.get("code");
+
+
+const oauthError =
+    urlParameters.get("error");
+
+
+if (authorizationCode) {
+
+    console.log(
+        "Discord authorization code received."
+    );
+
+
+    /*
+        IMPORTANT:
+
+        A GitHub Pages website cannot securely
+        exchange this code for a Discord access token.
+
+        You will need a backend later for the
+        full Discord account connection system.
+
+        For now, this confirms that Discord
+        successfully redirected the user back
+        to your PRIME website.
+    */
+
+}
+
+
+if (oauthError) {
+
+    console.error(
+        "Discord OAuth error:",
+        oauthError
+    );
+
+}
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+   ========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+function updateActiveNavigation() {
+
+    let currentSection =
+        "";
+
+
+    sections.forEach((section) => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+
+        if (
+            window.scrollY >= sectionTop
+        ) {
+
+            currentSection =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+
+    navLinks.forEach((link) => {
+
+        link.style.color = "";
+
+
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
+
+            link.style.color =
+                "#ffffff";
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateActiveNavigation
+);
+
+
+updateActiveNavigation();
