@@ -1,242 +1,135 @@
-document.addEventListener("DOMContentLoaded", () => {
+const modal = document.getElementById("messageModal");
 
-    const modal = document.getElementById("messageModal");
-    const closeModal = document.getElementById("closeModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalText = document.getElementById("modalText");
-    const modalButton = document.getElementById("modalButton");
-    const homeButton = document.getElementById("homeButton");
+const closeModal = document.getElementById("closeModal");
 
+const modalTitle = document.getElementById("modalTitle");
 
-    // =========================
-    // MODAL FUNCTIONS
-    // =========================
+const modalText = document.getElementById("modalText");
 
-    function openModal(title, message) {
+const modalButton = document.getElementById("modalButton");
 
-        modalTitle.textContent = title;
-        modalText.textContent = message;
+const addButtons =
+    document.querySelectorAll(".add-button");
 
-        modal.classList.remove("hidden");
+const plusButton =
+    document.querySelector(".plus-button");
 
-        modal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.style.overflow = "hidden";
-    }
+const proButton =
+    document.querySelector(".pro-button");
 
 
-    function hideModal() {
+function openModal(title, text, buttonText) {
 
-        modal.classList.add("hidden");
+    modalTitle.textContent = title;
 
-        modal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+    modalText.textContent = text;
 
-        document.body.style.overflow = "";
-    }
+    modalButton.textContent =
+        buttonText;
 
+    modal.classList.remove("hidden");
 
-    // =========================
-    // ADD TO DISCORD BUTTONS
-    // =========================
-
-    const addButtons =
-        document.querySelectorAll(".add-button");
+}
 
 
-    addButtons.forEach((button) => {
+function hideModal() {
 
-        button.addEventListener(
-            "click",
-            () => {
+    modal.classList.add("hidden");
 
-                openModal(
-                    "Add PRIME to Discord",
-                    "PRIME is currently being prepared for deployment. Discord installation will be available here."
-                );
-
-            }
-        );
-
-    });
+}
 
 
-    // =========================
-    // PLAN BUTTONS
-    // =========================
+addButtons.forEach((button) => {
 
-    const planButtons =
-        document.querySelectorAll("[data-plan]");
-
-
-    planButtons.forEach((button) => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const plan =
-                    button.dataset.plan;
-
-                openModal(
-                    plan,
-                    `${plan} membership is not available for checkout yet. This button will be connected to the payment system when PRIME subscriptions launch.`
-                );
-
-            }
-        );
-
-    });
-
-
-    // =========================
-    // CLOSE MODAL
-    // =========================
-
-    closeModal.addEventListener(
+    button.addEventListener(
         "click",
-        hideModal
-    );
+        () => {
 
-
-    modalButton.addEventListener(
-        "click",
-        hideModal
-    );
-
-
-    modal.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target === modal
-            ) {
-
-                hideModal();
-
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (
-                event.key === "Escape" &&
-                !modal.classList.contains("hidden")
-            ) {
-
-                hideModal();
-
-            }
-
-        }
-    );
-
-
-    // =========================
-    // HOME LOGO
-    // =========================
-
-    if (homeButton) {
-
-        homeButton.addEventListener(
-            "click",
-            () => {
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-
-            }
-        );
-
-    }
-
-
-    // =========================
-    // SCROLL REVEAL ANIMATION
-    // =========================
-
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-
-    const revealObserver =
-        new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach(
-                    (entry) => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-
-    revealElements.forEach(
-        (element) => {
-
-            revealObserver.observe(
-                element
+            openModal(
+                "Add PRIME to Discord",
+                "Discord integration will be available soon. PRIME is currently being prepared for deployment.",
+                "Continue"
             );
 
         }
     );
 
+});
 
-    // =========================
-    // HERO LOAD ANIMATION
-    // =========================
 
-    window.setTimeout(
+if (plusButton) {
+
+    plusButton.addEventListener(
+        "click",
         () => {
 
-            document
-                .querySelectorAll(
-                    ".hero .reveal"
-                )
-                .forEach(
-                    (element) => {
+            openModal(
+                "PRIME PLUS",
+                "PRIME PLUS is planned at $2.99 per month and will include enhanced monitoring, advanced alerts, and additional protection features.",
+                "Continue"
+            );
 
-                        element.classList.add(
-                            "visible"
-                        );
-
-                    }
-                );
-
-        },
-        120
+        }
     );
 
-});
+}
+
+
+if (proButton) {
+
+    proButton.addEventListener(
+        "click",
+        () => {
+
+            openModal(
+                "PRIME PRO",
+                "PRIME PRO is planned at $5.99 per month and will provide the most advanced protection and future premium features.",
+                "Continue"
+            );
+
+        }
+    );
+
+}
+
+
+closeModal.addEventListener(
+    "click",
+    hideModal
+);
+
+
+modalButton.addEventListener(
+    "click",
+    hideModal
+);
+
+
+modal.addEventListener(
+    "click",
+    (event) => {
+
+        if (event.target === modal) {
+
+            hideModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            hideModal();
+
+        }
+
+    }
+);
