@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Privacy Policy | PRIME</title>
+
+    <style>
+        :root {
+            --background: #080b12;
+            --surface: #10151f;
+            --surface-light: #151c28;
+            --border: #293241;
+            --text: #f4f6fa;
+            --muted: #9ca7b8;
+            --red: #ff4d4d;
+            --green: #71d6b1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(255, 70, 70, 0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 30%,
+                    rgba(60, 80, 120, 0.08),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+            font-family:
+                Inter,
+                Arial,
+                sans-serif;
+
+            line-height: 1.7;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+            pointer-events: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 100%;
+            padding: 20px max(24px, calc((100% - 1100px) / 2));
+
+            background: rgba(8, 11, 18, 0.88);
+            backdrop-filter: blur(16px);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            font-size: 1.7rem;
+            font-weight: 900;
+            letter-spacing: -0.08em;
+        }
+
+        .back-button {
+            color: var(--text);
+            text-decoration: none;
+
+            padding: 10px 16px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            font-size: 0.85rem;
+            font-weight: 700;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        main {
+            position: relative;
+
+            width: min(900px, calc(100% - 40px));
+
+            margin: 0 auto;
+
+            padding: 90px 0 100px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--muted);
+
+            margin-bottom: 18px;
+
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 20px rgba(255, 77, 77, 0.8);
+        }
+
+        h1 {
+            max-width: 700px;
+
+            margin-bottom: 22px;
+
+            font-size:
+                clamp(
+                    3rem,
+                    8vw,
+                    6rem
+                );
+
+            line-height: 0.95;
+            letter-spacing: -0.06em;
+        }
+
+        .subtitle {
+            max-width: 700px;
+
+            color: var(--muted);
+
+            font-size: 1.1rem;
+        }
+
+        .updated {
+            margin-top: 25px;
+
+            color: #6f7b8e;
+
+            font-size: 0.85rem;
+        }
+
+        .content {
+            margin-top: 65px;
+
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.035),
+                    rgba(255, 255, 255, 0.01)
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+        }
+
+        section + section {
+            margin-top: 45px;
+
+            padding-top: 45px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        h2 {
+            margin-bottom: 16px;
+
+            font-size: 1.45rem;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        p + p {
+            margin-top: 14px;
+        }
+
+        ul {
+            margin-top: 15px;
+            padding-left: 22px;
+
+            color: var(--muted);
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        a {
+            color: var(--text);
+        }
+
+        .highlight {
+            color: var(--text);
+        }
+
+        .contact {
+            margin-top: 65px;
+
+            padding: 30px;
+
+            background: rgba(113, 214, 177, 0.05);
+
+            border:
+                1px solid rgba(113, 214, 177, 0.2);
+
+            border-radius: 16px;
+        }
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            color: #687386;
+
+            font-size: 0.8rem;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 16px 20px;
+            }
+
+            main {
+                width: min(
+                    100% - 30px,
+                    900px
+                );
+
+                padding-top: 65px;
+            }
+
+            .content {
+                padding: 24px;
+                border-radius: 16px;
+            }
+
+            .back-button {
+                padding: 9px 13px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a
+            href="./"
+            class="logo"
+            aria-label="Return to PRIME home"
+        >
+            PRIME
+        </a>
+
+        <a
+            href="./"
+            class="back-button"
+        >
+            ← Back to PRIME
+        </a>
+    </header>
+
+    <main>
+
+        <div class="eyebrow">
+            <span class="dot"></span>
+            Legal Information
+        </div>
+
+        <h1>
+            Privacy Policy
+        </h1>
+
+        <p class="subtitle">
+            This Privacy Policy explains what information PRIME may
+            process and how that information is used.
+        </p>
+
+        <p class="updated">
+            Last updated: August 20, 2026
+        </p>
+
+        <div class="content">
+
+            <section>
+                <h2>1. Overview</h2>
+
+                <p>
+                    PRIME respects the privacy of Discord users and
+                    communities. This Privacy Policy describes the
+                    information that may be processed when PRIME is
+                    installed or used in a Discord server.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. Information PRIME May Process</h2>
+
+                <p>
+                    Depending on the features enabled and Discord
+                    permissions granted, PRIME may process information
+                    necessary to operate its security, moderation, and
+                    server management features.
+                </p>
+
+                <p>
+                    This may include:
+                </p>
+
+                <ul>
+                    <li>Discord server IDs.</li>
+
+                    <li>Discord user IDs.</li>
+
+                    <li>Discord channel IDs.</li>
+
+                    <li>Discord role IDs.</li>
+
+                    <li>Configuration and moderation settings.</li>
+
+                    <li>
+                        Server activity and event information required for
+                        PRIME's security features.
+                    </li>
+
+                    <li>
+                        Information provided through commands or interactions
+                        with PRIME.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. How Information Is Used</h2>
+
+                <p>
+                    Information processed by PRIME may be used to:
+                </p>
+
+                <ul>
+                    <li>Provide PRIME's security and moderation features.</li>
+
+                    <li>Respond to commands and interactions.</li>
+
+                    <li>Maintain server-specific configuration.</li>
+
+                    <li>Detect and respond to potential security concerns.</li>
+
+                    <li>Improve reliability and troubleshoot technical issues.</li>
+
+                    <li>Protect PRIME and Discord communities from abuse.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. Message Content</h2>
+
+                <p>
+                    PRIME does not sell or publicly distribute Discord
+                    message content.
+                </p>
+
+                <p>
+                    If a PRIME feature requires access to message content for
+                    moderation, security, or command functionality, that
+                    information is only processed as necessary to provide the
+                    relevant feature and protect the Discord community.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. Data Sharing</h2>
+
+                <p>
+                    PRIME does not sell personal information.
+                </p>
+
+                <p>
+                    Information processed by PRIME is not shared with third
+                    parties except when necessary to operate the service,
+                    comply with applicable legal obligations, protect the
+                    security of PRIME or its users, or when otherwise
+                    required by law.
+                </p>
+            </section>
+
+            <section>
+                <h2>6. Data Retention</h2>
+
+                <p>
+                    PRIME retains information only for as long as reasonably
+                    necessary to provide its services, maintain server
+                    functionality, resolve technical or security issues, or
+                    comply with applicable obligations.
+                </p>
+
+                <p>
+                    Some configuration or operational data may be deleted when
+                    PRIME is removed from a Discord server, subject to
+                    reasonable backup and technical retention periods.
+                </p>
+            </section>
+
+            <section>
+                <h2>7. Data Deletion Requests</h2>
+
+                <p>
+                    Users or server owners may request information about
+                    relevant data processed by PRIME or request deletion of
+                    applicable stored data.
+                </p>
+
+                <p>
+                    Data requests can be made through the official PRIME
+                    support channels.
+                </p>
+            </section>
+
+            <section>
+                <h2>8. Security</h2>
+
+                <p>
+                    Reasonable measures are used to help protect information
+                    processed by PRIME. However, no online system can be
+                    guaranteed to be completely secure.
+                </p>
+            </section>
+
+            <section>
+                <h2>9. Children's Privacy</h2>
+
+                <p>
+                    PRIME is intended for use through Discord in accordance
+                    with Discord's applicable Terms of Service and minimum
+                    age requirements.
+                </p>
+            </section>
+
+            <section>
+                <h2>10. Changes to This Policy</h2>
+
+                <p>
+                    This Privacy Policy may be updated as PRIME develops or
+                    its features change. Updated versions will be published
+                    on this website.
+                </p>
+            </section>
+
+            <section>
+                <h2>11. Contact</h2>
+
+                <p>
+                    Questions about this Privacy Policy or requests relating
+                    to data can be directed to the official PRIME support
+                    channels.
+                </p>
+            </section>
+
+        </div>
+
+        <div class="contact">
+            <p class="highlight">
+                PRIME is committed to using Discord-related information only
+                as reasonably necessary to provide and maintain its services.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 PRIME. All rights reserved.
+    </footer>
+
+</body>
+</html>
