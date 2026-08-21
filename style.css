@@ -856,6 +856,47 @@ nav {
     letter-spacing: 0.12em;
 }
 
+/* Requested plan effects */
+
+.prime-free span {
+    color: #737b88;
+}
+
+.prime-plus span {
+    background: linear-gradient(
+        100deg,
+        #9d6d1f 0%,
+        #f0b84d 22%,
+        #fff0a0 45%,
+        #c58b2b 67%,
+        #f0b84d 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: goldShimmer 4.8s linear infinite;
+}
+
+.prime-pro span {
+    background: linear-gradient(
+        90deg,
+        #ff5555,
+        #ff9f43,
+        #ffe066,
+        #63e6be,
+        #4dabf7,
+        #9775fa,
+        #f783ac,
+        #ff5555
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbowFlow 9s linear infinite;
+    filter: saturate(0.92);
+}
 
 .price {
     margin: 28px 0;
@@ -1059,6 +1100,25 @@ footer p {
     }
 }
 
+@keyframes goldShimmer {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 250% 50%;
+    }
+}
+
+@keyframes rainbowFlow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 400% 50%;
+    }
+}
 
 /* RESPONSIVE */
 
