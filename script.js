@@ -1,103 +1,242 @@
-const modal = document.getElementById("messageModal");
+document.addEventListener("DOMContentLoaded", () => {
 
-const closeModal = document.getElementById("closeModal");
-
-const modalTitle = document.getElementById("modalTitle");
-
-const modalText = document.getElementById("modalText");
-
-const modalButton = document.getElementById("modalButton");
-
-const addButtons = document.querySelectorAll(".add-button");
-
-const plusButton = document.querySelector(".plus-button");
-
-const proButton = document.querySelector(".pro-button");
+    const modal = document.getElementById("messageModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const modalButton = document.getElementById("modalButton");
+    const homeButton = document.getElementById("homeButton");
 
 
-function openModal(title, text) {
+    // =========================
+    // MODAL FUNCTIONS
+    // =========================
 
-    modalTitle.textContent = title;
+    function openModal(title, message) {
 
-    modalText.textContent = text;
+        modalTitle.textContent = title;
+        modalText.textContent = message;
 
-    modal.classList.remove("hidden");
+        modal.classList.remove("hidden");
 
-}
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow = "hidden";
+    }
 
 
-function closeMessageModal() {
+    function hideModal() {
 
-    modal.classList.add("hidden");
+        modal.classList.add("hidden");
 
-}
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.style.overflow = "";
+    }
 
 
-addButtons.forEach((button) => {
+    // =========================
+    // ADD TO DISCORD BUTTONS
+    // =========================
 
-    button.addEventListener("click", () => {
+    const addButtons =
+        document.querySelectorAll(".add-button");
 
-        openModal(
-            "PRIME",
-            "PRIME is ready to be added to your Discord community."
+
+    addButtons.forEach((button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                openModal(
+                    "Add PRIME to Discord",
+                    "PRIME is currently being prepared for deployment. Discord installation will be available here."
+                );
+
+            }
         );
 
     });
 
-});
+
+    // =========================
+    // PLAN BUTTONS
+    // =========================
+
+    const planButtons =
+        document.querySelectorAll("[data-plan]");
 
 
-if (plusButton) {
+    planButtons.forEach((button) => {
 
-    plusButton.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-        openModal(
-            "PRIME PLUS",
-            "PRIME PLUS will be available soon."
+                const plan =
+                    button.dataset.plan;
+
+                openModal(
+                    plan,
+                    `${plan} membership is not available for checkout yet. This button will be connected to the payment system when PRIME subscriptions launch.`
+                );
+
+            }
         );
 
     });
 
-}
+
+    // =========================
+    // CLOSE MODAL
+    // =========================
+
+    closeModal.addEventListener(
+        "click",
+        hideModal
+    );
 
 
-if (proButton) {
+    modalButton.addEventListener(
+        "click",
+        hideModal
+    );
 
-    proButton.addEventListener("click", () => {
 
-        openModal(
-            "PRIME PRO",
-            "PRIME PRO will be available soon."
+    modal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === modal
+            ) {
+
+                hideModal();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                !modal.classList.contains("hidden")
+            ) {
+
+                hideModal();
+
+            }
+
+        }
+    );
+
+
+    // =========================
+    // HOME LOGO
+    // =========================
+
+    if (homeButton) {
+
+        homeButton.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
         );
-
-    });
-
-}
-
-
-closeModal.addEventListener("click", closeMessageModal);
-
-
-modalButton.addEventListener("click", closeMessageModal);
-
-
-modal.addEventListener("click", (event) => {
-
-    if (event.target === modal) {
-
-        closeMessageModal();
 
     }
 
-});
+
+    // =========================
+    // SCROLL REVEAL ANIMATION
+    // =========================
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
 
-document.addEventListener("keydown", (event) => {
+    const revealObserver =
+        new IntersectionObserver(
+            (entries) => {
 
-    if (event.key === "Escape") {
+                entries.forEach(
+                    (entry) => {
 
-        closeMessageModal();
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-    }
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(
+        (element) => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+    // =========================
+    // HERO LOAD ANIMATION
+    // =========================
+
+    window.setTimeout(
+        () => {
+
+            document
+                .querySelectorAll(
+                    ".hero .reveal"
+                )
+                .forEach(
+                    (element) => {
+
+                        element.classList.add(
+                            "visible"
+                        );
+
+                    }
+                );
+
+        },
+        120
+    );
 
 });
