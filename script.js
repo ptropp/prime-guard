@@ -9,14 +9,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
+    // STRIPE PAYMENT LINKS
+    // =========================
+    // Replace these with your real
+    // Stripe Payment Links.
+
+    const PLUS_PAYMENT_URL =
+        "PASTE_YOUR_PRIME_PLUS_STRIPE_LINK_HERE";
+
+    const PRO_PAYMENT_URL =
+        "PASTE_YOUR_PRIME_PRO_STRIPE_LINK_HERE";
+
+
+    // =========================
     // MODAL ELEMENTS
     // =========================
 
-    const modal = document.getElementById("messageModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalText = document.getElementById("modalText");
-    const closeModalButton = document.getElementById("closeModal");
-    const modalButton = document.getElementById("modalButton");
+    const modal =
+        document.getElementById("messageModal");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    const modalText =
+        document.getElementById("modalText");
+
+    const closeModalButton =
+        document.getElementById("closeModal");
+
+    const modalButton =
+        document.getElementById("modalButton");
 
 
     // =========================
@@ -25,26 +47,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const openModal = (title, message) => {
 
-        if (!modal || !modalTitle || !modalText) return;
+        if (
+            !modal ||
+            !modalTitle ||
+            !modalText
+        ) {
+            return;
+        }
 
-        modalTitle.textContent = title;
-        modalText.textContent = message;
+        modalTitle.textContent =
+            title;
 
-        modal.classList.remove("hidden");
-        modal.setAttribute("aria-hidden", "false");
+        modalText.textContent =
+            message;
 
-        document.body.classList.add("modal-open");
+        modal.classList.remove(
+            "hidden"
+        );
+
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.classList.add(
+            "modal-open"
+        );
     };
 
 
     const hideModal = () => {
 
-        if (!modal) return;
+        if (!modal) {
+            return;
+        }
 
-        modal.classList.add("hidden");
-        modal.setAttribute("aria-hidden", "true");
+        modal.classList.add(
+            "hidden"
+        );
 
-        document.body.classList.remove("modal-open");
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.classList.remove(
+            "modal-open"
+        );
     };
 
 
@@ -52,37 +101,104 @@ document.addEventListener("DOMContentLoaded", () => {
     // ADD TO DISCORD BUTTONS
     // =========================
 
-    document.querySelectorAll(".add-button").forEach((button) => {
+    document
+        .querySelectorAll(".add-button")
+        .forEach((button) => {
 
-        button.addEventListener("click", () => {
+            button.addEventListener(
+                "click",
+                () => {
 
-            window.location.href =
-                DISCORD_INVITE_URL;
+                    window.location.href =
+                        DISCORD_INVITE_URL;
 
-        });
-
-    });
-
-
-    // =========================
-    // PLAN BUTTONS
-    // =========================
-
-    document.querySelectorAll(".plan-select").forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const plan =
-                button.dataset.plan || "PRIME plan";
-
-            openModal(
-                plan,
-                `You selected ${plan}. Connect your payment or membership flow here when you're ready to launch.`
+                }
             );
 
         });
 
-    });
+
+    // =========================
+    // PAYMENT PLAN BUTTONS
+    // =========================
+
+    document
+        .querySelectorAll(".plan-select")
+        .forEach((button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const plan =
+                        button.dataset.plan;
+
+
+                    // =========================
+                    // PRIME PLUS
+                    // =========================
+
+                    if (plan === "PRIME PLUS") {
+
+                        if (
+                            PLUS_PAYMENT_URL ===
+                            "PASTE_YOUR_PRIME_PLUS_STRIPE_LINK_HERE"
+                        ) {
+
+                            openModal(
+                                "PRIME PLUS",
+                                "PRIME PLUS payments are being prepared. Please check back soon."
+                            );
+
+                            return;
+                        }
+
+                        window.location.href =
+                            PLUS_PAYMENT_URL;
+
+                        return;
+                    }
+
+
+                    // =========================
+                    // PRIME PRO
+                    // =========================
+
+                    if (plan === "PRIME PRO") {
+
+                        if (
+                            PRO_PAYMENT_URL ===
+                            "PASTE_YOUR_PRIME_PRO_STRIPE_LINK_HERE"
+                        ) {
+
+                            openModal(
+                                "PRIME PRO",
+                                "PRIME PRO payments are being prepared. Please check back soon."
+                            );
+
+                            return;
+                        }
+
+                        window.location.href =
+                            PRO_PAYMENT_URL;
+
+                        return;
+                    }
+
+
+                    // =========================
+                    // FALLBACK
+                    // =========================
+
+                    openModal(
+                        "PRIME",
+                        "This membership option is not available right now."
+                    );
+
+                }
+            );
+
+        });
 
 
     // =========================
@@ -115,20 +231,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // =========================
     // CLOSE MODAL BY CLICKING
-    // OUTSIDE OF IT
+    // OUTSIDE
     // =========================
 
     if (modal) {
 
-        modal.addEventListener("click", (event) => {
+        modal.addEventListener(
+            "click",
+            (event) => {
 
-            if (event.target === modal) {
+                if (
+                    event.target === modal
+                ) {
 
-                hideModal();
+                    hideModal();
+
+                }
 
             }
-
-        });
+        );
 
     }
 
@@ -137,57 +258,69 @@ document.addEventListener("DOMContentLoaded", () => {
     // CLOSE MODAL WITH ESC
     // =========================
 
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener(
+        "keydown",
+        (event) => {
 
-        if (event.key === "Escape") {
+            if (
+                event.key === "Escape"
+            ) {
 
-            hideModal();
+                hideModal();
+
+            }
 
         }
-
-    });
-
-
-    // =========================
-    // SCROLL REVEAL ANIMATION
-    // =========================
-
-    const revealObserver = new IntersectionObserver(
-
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("visible");
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.12
-        }
-
     );
 
 
-    document.querySelectorAll(".reveal").forEach(
+    // =========================
+    // SCROLL REVEAL
+    // =========================
 
-        (element) => {
+    const revealObserver =
+        new IntersectionObserver(
 
-            revealObserver.observe(element);
+            (entries) => {
 
-        }
+                entries.forEach(
+                    (entry) => {
 
-    );
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach((element) => {
+
+            revealObserver.observe(
+                element
+            );
+
+        });
 
 
     // =========================
@@ -195,7 +328,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
 
     const particles =
-        document.getElementById("particles");
+        document.getElementById(
+            "particles"
+        );
 
 
     if (particles) {
@@ -213,7 +348,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
             const particle =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
 
             particle.className =
@@ -250,135 +387,144 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
 
     const counters =
-        document.querySelectorAll(".counter");
+        document.querySelectorAll(
+            ".counter"
+        );
 
 
-    counters.forEach((counter) => {
+    counters.forEach(
+        (counter) => {
 
-        const target =
-            Number(counter.dataset.target);
-
-
-        if (
-            !Number.isFinite(target) ||
-            target <= 0
-        ) {
-
-            return;
-
-        }
+            const target =
+                Number(
+                    counter.dataset.target
+                );
 
 
-        let started =
-            false;
+            if (
+                !Number.isFinite(target) ||
+                target <= 0
+            ) {
+
+                return;
+
+            }
 
 
-        const animateCounter = () => {
-
-            if (started) return;
-
-
-            started =
-                true;
+            let started =
+                false;
 
 
-            const duration =
-                900;
+            const animateCounter =
+                () => {
 
-
-            const startTime =
-                performance.now();
-
-
-            const update =
-                (currentTime) => {
-
-                    const progress =
-                        Math.min(
-                            (
-                                currentTime -
-                                startTime
-                            ) /
-                            duration,
-                            1
-                        );
-
-
-                    const eased =
-                        1 -
-                        Math.pow(
-                            1 - progress,
-                            3
-                        );
-
-
-                    counter.textContent =
-                        Math.round(
-                            target *
-                            eased
-                        );
-
-
-                    if (
-                        progress < 1
-                    ) {
-
-                        requestAnimationFrame(
-                            update
-                        );
-
-                    } else {
-
-                        counter.textContent =
-                            target;
-
+                    if (started) {
+                        return;
                     }
+
+
+                    started =
+                        true;
+
+
+                    const duration =
+                        900;
+
+
+                    const startTime =
+                        performance.now();
+
+
+                    const update =
+                        (currentTime) => {
+
+                            const progress =
+                                Math.min(
+                                    (
+                                        currentTime -
+                                        startTime
+                                    ) /
+                                    duration,
+                                    1
+                                );
+
+
+                            const eased =
+                                1 -
+                                Math.pow(
+                                    1 - progress,
+                                    3
+                                );
+
+
+                            counter.textContent =
+                                Math.round(
+                                    target *
+                                    eased
+                                );
+
+
+                            if (
+                                progress < 1
+                            ) {
+
+                                requestAnimationFrame(
+                                    update
+                                );
+
+                            } else {
+
+                                counter.textContent =
+                                    target;
+
+                            }
+
+                        };
+
+
+                    requestAnimationFrame(
+                        update
+                    );
 
                 };
 
 
-            requestAnimationFrame(
-                update
-            );
+            const counterObserver =
+                new IntersectionObserver(
 
-        };
+                    (entries) => {
 
+                        entries.forEach(
+                            (entry) => {
 
-        const counterObserver =
-            new IntersectionObserver(
+                                if (
+                                    entry.isIntersecting
+                                ) {
 
-                (entries) => {
+                                    animateCounter();
 
-                    entries.forEach(
-                        (entry) => {
+                                    counterObserver.disconnect();
 
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                animateCounter();
-
-                                counterObserver.disconnect();
+                                }
 
                             }
+                        );
 
-                        }
-                    );
+                    },
 
-                },
+                    {
+                        threshold: 0.4
+                    }
 
-                {
-                    threshold: 0.4
-                }
+                );
 
+
+            counterObserver.observe(
+                counter
             );
 
-
-        counterObserver.observe(
-            counter
-        );
-
-    });
+        }
+    );
 
 
     // =========================
@@ -417,7 +563,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
 
-                    if (!target) return;
+                    if (!target) {
+                        return;
+                    }
 
 
                     event.preventDefault();
