@@ -11,17 +11,11 @@
 
 <body>
 
-    <div class="background-grid"></div>
-    <div class="background-glow glow-one"></div>
-    <div class="background-glow glow-two"></div>
-
-    <!-- NAVIGATION -->
-
     <nav>
 
-        <button class="nav-logo" id="homeButton" type="button">
+        <a href="#" class="logo">
             PRIME
-        </button>
+        </a>
 
         <div class="nav-links">
             <a href="#features">Platform</a>
@@ -29,7 +23,7 @@
             <a href="#pricing">Plans</a>
         </div>
 
-        <button class="nav-button add-button" type="button">
+        <button class="nav-button add-button">
             Get Started
         </button>
 
@@ -40,32 +34,32 @@
 
         <!-- HERO -->
 
-        <section class="hero" id="home">
+        <section class="hero">
 
-            <div class="hero-content reveal">
+            <div class="hero-left">
 
-                <div class="eyebrow">
-                    <span class="eyebrow-dot"></span>
-                    PRIME SECURITY PLATFORM
+                <div class="hero-eyebrow">
+                    <span class="hero-dot"></span>
+                    RESPONSIVE INTELLIGENCE
                 </div>
 
-                <h1 class="prime-title">
-                    PRIME
+                <h1>
+                    Intelligence for the<br>
+                    communities<br>
+                    <span>that never slow<br>down.</span>
                 </h1>
 
-                <div class="hero-subtitle">
-                    RESPONSIVE INTELLIGENCE MANAGEMENT ENGINE
-                </div>
-
                 <p class="hero-description">
-                    Intelligent Discord security and automated protection
-                    designed to help keep your community under control.
+                    PRIME is a responsive intelligence platform built to help
+                    Discord communities detect threats, manage activity, and
+                    respond with confidence.
                 </p>
 
                 <div class="hero-buttons">
 
-                    <button class="primary-button add-button" type="button">
-                        Add to Discord
+                    <button class="primary-button add-button">
+                        Get Started
+                        <span>→</span>
                     </button>
 
                     <a href="#features" class="secondary-button">
@@ -74,19 +68,20 @@
 
                 </div>
 
+
                 <div class="hero-stats">
 
-                    <div class="hero-stat">
+                    <div class="stat">
                         <strong>24/7</strong>
                         <span>Monitoring</span>
                     </div>
 
-                    <div class="hero-stat">
+                    <div class="stat">
                         <strong>Fast</strong>
                         <span>Response</span>
                     </div>
 
-                    <div class="hero-stat">
+                    <div class="stat">
                         <strong>Smart</strong>
                         <span>Protection</span>
                     </div>
@@ -96,9 +91,7 @@
             </div>
 
 
-            <!-- DASHBOARD -->
-
-            <div class="dashboard-wrap reveal delay-one">
+            <div class="dashboard-wrap">
 
                 <div class="dashboard-card">
 
@@ -132,9 +125,9 @@
                                 SECURITY EVENTS
                             </span>
 
-                            <strong class="metric-value">
+                            <span class="metric-value">
                                 128
-                            </strong>
+                            </span>
 
                             <span class="metric-sub">
                                 Tracked today
@@ -147,9 +140,9 @@
                                 THREAT LEVEL
                             </span>
 
-                            <strong class="metric-value low">
+                            <span class="metric-value low">
                                 LOW
-                            </strong>
+                            </span>
 
                             <span class="metric-sub">
                                 System stable
@@ -162,9 +155,9 @@
                                 RESPONSE TIME
                             </span>
 
-                            <strong class="metric-value">
+                            <span class="metric-value">
                                 0.4s
-                            </strong>
+                            </span>
 
                             <span class="metric-sub">
                                 Average
@@ -178,7 +171,7 @@
 
                         <div class="activity-heading">
                             <span>RECENT ACTIVITY</span>
-                            <span>LIVE</span>
+                            <a href="#">VIEW ALL</a>
                         </div>
 
 
@@ -213,7 +206,7 @@
 
                             <div class="activity-info">
                                 <span class="activity-name">
-                                    Community check completed
+                                    Community scan completed
                                 </span>
 
                                 <span class="activity-sub">
@@ -238,17 +231,17 @@
 
         <!-- TRUST STRIP -->
 
-        <section class="trust-section reveal">
+        <section class="trust-section">
 
-            <div class="trust-label">
+            <span class="trust-label">
                 BUILT FOR MODERN DISCORD COMMUNITIES
-            </div>
+            </span>
 
             <div class="trust-items">
-                <span>SECURITY</span>
-                <span>INTELLIGENCE</span>
-                <span>AUTOMATION</span>
-                <span>RESPONSE</span>
+                <span>Security</span>
+                <span>Intelligence</span>
+                <span>Automation</span>
+                <span>Response</span>
             </div>
 
         </section>
@@ -256,9 +249,9 @@
 
         <!-- FEATURES -->
 
-        <section id="features" class="section features">
+        <section id="features" class="section">
 
-            <div class="section-heading reveal">
+            <div class="section-heading">
 
                 <div class="section-eyebrow">
                     THE PLATFORM
@@ -279,7 +272,7 @@
 
             <div class="feature-grid">
 
-                <article class="feature-card reveal">
+                <div class="feature-card">
 
                     <div class="feature-number">
                         01
@@ -294,10 +287,10 @@
                         threats before they become a larger problem.
                     </p>
 
-                </article>
+                </div>
 
 
-                <article class="feature-card reveal delay-one">
+                <div class="feature-card">
 
                     <div class="feature-number">
                         02
@@ -312,10 +305,10 @@
                         your community from disruptive events.
                     </p>
 
-                </article>
+                </div>
 
 
-                <article class="feature-card reveal delay-two">
+                <div class="feature-card">
 
                     <div class="feature-number">
                         03
@@ -330,25 +323,7 @@
                         organized monitoring and incident records.
                     </p>
 
-                </article>
-
-
-                <article class="feature-card reveal">
-
-                    <div class="feature-number">
-                        04
-                    </div>
-
-                    <h3>
-                        Automated Response
-                    </h3>
-
-                    <p>
-                        Respond faster to security events with automated
-                        systems designed to reduce manual work.
-                    </p>
-
-                </article>
+                </div>
 
             </div>
 
@@ -359,7 +334,7 @@
 
         <section id="status" class="status-section">
 
-            <div class="status-card reveal">
+            <div class="status-card">
 
                 <div>
 
@@ -378,15 +353,8 @@
                 </div>
 
 
-                <div class="status-indicator">
-
-                    <div class="status-dot"></div>
-
-                    <div>
-                        <strong>Operational</strong>
-                        <span>All systems online</span>
-                    </div>
-
+                <div class="status-online">
+                    ● ALL SYSTEMS OPERATIONAL
                 </div>
 
             </div>
@@ -396,9 +364,9 @@
 
         <!-- PRICING -->
 
-        <section id="pricing" class="section pricing">
+        <section id="pricing" class="section">
 
-            <div class="section-heading reveal">
+            <div class="section-heading">
 
                 <div class="section-eyebrow">
                     MEMBERSHIP
@@ -414,28 +382,18 @@
 
             <div class="pricing-grid">
 
-                <!-- FREE -->
+                <div class="plan-card">
 
-                <div class="plan-card reveal">
+                    <h3>FREE</h3>
 
-                    <div class="plan-top">
-
-                        <h3>
-                            FREE
-                        </h3>
-
-                        <p class="plan-description">
-                            Essential security for smaller communities.
-                        </p>
-
-                    </div>
-
+                    <p class="plan-description">
+                        Essential security for smaller communities.
+                    </p>
 
                     <div class="price">
                         $0
                         <span>/ month</span>
                     </div>
-
 
                     <ul>
                         <li>Basic security monitoring</li>
@@ -445,44 +403,29 @@
                         <li>Incident tracking</li>
                     </ul>
 
-
-                    <button
-                        class="plan-button add-button"
-                        type="button"
-                    >
+                    <button class="plan-button add-button">
                         Add to Discord
                     </button>
 
                 </div>
 
 
-                <!-- PLUS -->
-
-                <div class="plan-card popular reveal delay-one">
+                <div class="plan-card popular">
 
                     <div class="popular-label">
                         MOST POPULAR
                     </div>
 
+                    <h3>PRIME PLUS</h3>
 
-                    <div class="plan-top">
-
-                        <h3>
-                            PRIME PLUS
-                        </h3>
-
-                        <p class="plan-description">
-                            Advanced protection for growing communities.
-                        </p>
-
-                    </div>
-
+                    <p class="plan-description">
+                        Advanced protection for growing communities.
+                    </p>
 
                     <div class="price">
                         $2.99
                         <span>/ month</span>
                     </div>
-
 
                     <ul>
                         <li>Everything in FREE</li>
@@ -493,40 +436,25 @@
                         <li>Premium security features</li>
                     </ul>
 
-
-                    <button
-                        class="plan-button plus-button"
-                        data-plan="PRIME PLUS"
-                        type="button"
-                    >
+                    <button class="plan-button plus-button">
                         Choose PLUS
                     </button>
 
                 </div>
 
 
-                <!-- PRO -->
+                <div class="plan-card">
 
-                <div class="plan-card reveal delay-two">
+                    <h3>PRIME PRO</h3>
 
-                    <div class="plan-top">
-
-                        <h3>
-                            PRIME PRO
-                        </h3>
-
-                        <p class="plan-description">
-                            Maximum protection for serious communities.
-                        </p>
-
-                    </div>
-
+                    <p class="plan-description">
+                        Maximum protection for serious communities.
+                    </p>
 
                     <div class="price">
                         $5.99
                         <span>/ month</span>
                     </div>
-
 
                     <ul>
                         <li>Everything in PRIME PLUS</li>
@@ -537,47 +465,11 @@
                         <li>Future premium features</li>
                     </ul>
 
-
-                    <button
-                        class="plan-button pro-button"
-                        data-plan="PRIME PRO"
-                        type="button"
-                    >
+                    <button class="plan-button pro-button">
                         Choose PRO
                     </button>
 
                 </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- FINAL CTA -->
-
-        <section class="final-cta">
-
-            <div class="cta-box reveal">
-
-                <div class="section-eyebrow">
-                    READY TO DEPLOY?
-                </div>
-
-                <h2>
-                    Your community deserves
-                    <span>better protection.</span>
-                </h2>
-
-                <p>
-                    Add PRIME to your Discord server and get started.
-                </p>
-
-                <button
-                    class="primary-button add-button"
-                    type="button"
-                >
-                    Add PRIME to Discord
-                </button>
 
             </div>
 
@@ -588,46 +480,23 @@
 
     <!-- MODAL -->
 
-    <div
-        id="messageModal"
-        class="modal hidden"
-        aria-hidden="true"
-    >
+    <div id="messageModal" class="modal hidden">
 
-        <div
-            class="modal-content"
-            role="dialog"
-            aria-modal="true"
-        >
+        <div class="modal-content">
 
-            <button
-                id="closeModal"
-                class="close-button"
-                type="button"
-                aria-label="Close"
-            >
+            <button id="closeModal" class="close-button">
                 ×
             </button>
-
-
-            <div class="modal-kicker">
-                PRIME
-            </div>
-
 
             <h2 id="modalTitle">
                 PRIME
             </h2>
 
+            <p id="modalText">
+                PRIME is ready.
+            </p>
 
-            <p id="modalText"></p>
-
-
-            <button
-                id="modalButton"
-                class="primary-button"
-                type="button"
-            >
+            <button id="modalButton" class="primary-button">
                 Continue
             </button>
 
@@ -635,8 +504,6 @@
 
     </div>
 
-
-    <!-- FOOTER -->
 
     <footer>
 
@@ -646,10 +513,6 @@
 
         <p>
             Responsive Intelligence Management Engine
-        </p>
-
-        <p class="footer-credit">
-            Created by Ptrop
         </p>
 
     </footer>
