@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Terms of Service | PRIME</title>
+
+    <style>
+        :root {
+            --background: #080b12;
+            --surface: #10151f;
+            --surface-light: #151c28;
+            --border: #293241;
+            --text: #f4f6fa;
+            --muted: #9ca7b8;
+            --red: #ff4d4d;
+            --green: #71d6b1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(255, 70, 70, 0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 30%,
+                    rgba(60, 80, 120, 0.08),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+            font-family:
+                Inter,
+                Arial,
+                sans-serif;
+
+            line-height: 1.7;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+            pointer-events: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 100%;
+            padding: 20px max(24px, calc((100% - 1100px) / 2));
+
+            background: rgba(8, 11, 18, 0.88);
+            backdrop-filter: blur(16px);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            font-size: 1.7rem;
+            font-weight: 900;
+            letter-spacing: -0.08em;
+        }
+
+        .back-button {
+            color: var(--text);
+            text-decoration: none;
+
+            padding: 10px 16px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            font-size: 0.85rem;
+            font-weight: 700;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        main {
+            position: relative;
+
+            width: min(900px, calc(100% - 40px));
+
+            margin: 0 auto;
+
+            padding: 90px 0 100px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--muted);
+
+            margin-bottom: 18px;
+
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 20px rgba(255, 77, 77, 0.8);
+        }
+
+        h1 {
+            max-width: 700px;
+
+            margin-bottom: 22px;
+
+            font-size:
+                clamp(
+                    3rem,
+                    8vw,
+                    6rem
+                );
+
+            line-height: 0.95;
+            letter-spacing: -0.06em;
+        }
+
+        .subtitle {
+            max-width: 700px;
+
+            color: var(--muted);
+
+            font-size: 1.1rem;
+        }
+
+        .updated {
+            margin-top: 25px;
+
+            color: #6f7b8e;
+
+            font-size: 0.85rem;
+        }
+
+        .content {
+            margin-top: 65px;
+
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.035),
+                    rgba(255, 255, 255, 0.01)
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+        }
+
+        section + section {
+            margin-top: 45px;
+
+            padding-top: 45px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        h2 {
+            margin-bottom: 16px;
+
+            font-size: 1.45rem;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        p + p {
+            margin-top: 14px;
+        }
+
+        ul {
+            margin-top: 15px;
+            padding-left: 22px;
+
+            color: var(--muted);
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        a {
+            color: var(--text);
+        }
+
+        .highlight {
+            color: var(--text);
+        }
+
+        .contact {
+            margin-top: 65px;
+
+            padding: 30px;
+
+            background: rgba(255, 77, 77, 0.05);
+
+            border:
+                1px solid rgba(255, 77, 77, 0.2);
+
+            border-radius: 16px;
+        }
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            color: #687386;
+
+            font-size: 0.8rem;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 16px 20px;
+            }
+
+            main {
+                width: min(
+                    100% - 30px,
+                    900px
+                );
+
+                padding-top: 65px;
+            }
+
+            .content {
+                padding: 24px;
+                border-radius: 16px;
+            }
+
+            .back-button {
+                padding: 9px 13px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a
+            href="./"
+            class="logo"
+            aria-label="Return to PRIME home"
+        >
+            PRIME
+        </a>
+
+        <a
+            href="./"
+            class="back-button"
+        >
+            ← Back to PRIME
+        </a>
+    </header>
+
+    <main>
+
+        <div class="eyebrow">
+            <span class="dot"></span>
+            Legal Information
+        </div>
+
+        <h1>
+            Terms of Service
+        </h1>
+
+        <p class="subtitle">
+            These terms explain the rules and conditions for using
+            PRIME and its related Discord services.
+        </p>
+
+        <p class="updated">
+            Last updated: August 20, 2026
+        </p>
+
+        <div class="content">
+
+            <section>
+                <h2>1. Acceptance of Terms</h2>
+
+                <p>
+                    By installing, accessing, or using PRIME, you agree
+                    to these Terms of Service and the PRIME Privacy Policy.
+                    If you do not agree with these terms, you should not
+                    install or use PRIME.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. PRIME Service</h2>
+
+                <p>
+                    PRIME is a Discord security and moderation application
+                    designed to help communities monitor activity, respond
+                    to potential security concerns, and manage moderation
+                    features.
+                </p>
+
+                <p>
+                    Features may change, be improved, limited, or removed
+                    as PRIME continues to develop.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. Discord Requirements</h2>
+
+                <p>
+                    Your use of PRIME must comply with Discord's Terms of
+                    Service, Community Guidelines, and applicable policies.
+                    You are responsible for ensuring that your server and
+                    use of PRIME comply with all applicable rules.
+                </p>
+            </section>
+
+            <section>
+                <h2>4. Acceptable Use</h2>
+
+                <p>
+                    You agree not to use PRIME to:
+                </p>
+
+                <ul>
+                    <li>Violate Discord's Terms of Service or policies.</li>
+
+                    <li>Harass, threaten, or target other users.</li>
+
+                    <li>Attempt to interfere with PRIME or its services.</li>
+
+                    <li>Exploit vulnerabilities or abuse PRIME's features.</li>
+
+                    <li>Use PRIME for unlawful or harmful activity.</li>
+
+                    <li>
+                        Attempt to gain unauthorized access to accounts,
+                        servers, systems, or data.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>5. Server Administrators</h2>
+
+                <p>
+                    Server owners and administrators are responsible for
+                    configuring and using PRIME appropriately within their
+                    communities.
+                </p>
+
+                <p>
+                    PRIME may require certain Discord permissions to provide
+                    its features. Administrators are responsible for reviewing
+                    and approving permissions before adding PRIME to a server.
+                </p>
+            </section>
+
+            <section>
+                <h2>6. Availability</h2>
+
+                <p>
+                    PRIME is provided on an availability basis. We may perform
+                    maintenance, updates, improvements, or changes that may
+                    temporarily affect access to the service.
+                </p>
+
+                <p>
+                    We do not guarantee that PRIME will always operate without
+                    interruption, errors, or delays.
+                </p>
+            </section>
+
+            <section>
+                <h2>7. Termination</h2>
+
+                <p>
+                    PRIME may restrict or terminate access to the service if
+                    these Terms are violated, if the service is abused, or if
+                    continued use presents a security or operational risk.
+                </p>
+
+                <p>
+                    You may stop using PRIME at any time by removing the
+                    application from your Discord server.
+                </p>
+            </section>
+
+            <section>
+                <h2>8. Changes to These Terms</h2>
+
+                <p>
+                    These Terms may be updated as PRIME develops or as legal,
+                    security, or operational requirements change.
+                </p>
+
+                <p>
+                    Continued use of PRIME after updated terms are published
+                    means you accept the updated Terms.
+                </p>
+            </section>
+
+            <section>
+                <h2>9. Contact</h2>
+
+                <p>
+                    Questions about these Terms or PRIME can be directed to
+                    the PRIME development team through the official PRIME
+                    support channels.
+                </p>
+            </section>
+
+        </div>
+
+        <div class="contact">
+            <p class="highlight">
+                By using PRIME, you acknowledge that you have read and
+                agree to these Terms of Service.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 PRIME. All rights reserved.
+    </footer>
+
+</body>
+</html>
