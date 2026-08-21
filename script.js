@@ -9,16 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
-    // STRIPE PAYMENT LINKS
+    // PATREON
     // =========================
-    // Replace these with your real
-    // Stripe Payment Links.
 
-    const PLUS_PAYMENT_URL =
-        "PASTE_YOUR_PRIME_PLUS_STRIPE_LINK_HERE";
-
-    const PRO_PAYMENT_URL =
-        "PASTE_YOUR_PRIME_PRO_STRIPE_LINK_HERE";
+    const PATREON_URL =
+        "https://www.patreon.com/PeytonHunkus";
 
 
     // =========================
@@ -47,13 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const openModal = (title, message) => {
 
-        if (
-            !modal ||
-            !modalTitle ||
-            !modalText
-        ) {
-            return;
-        }
+        if (!modal || !modalTitle || !modalText) return;
 
         modalTitle.textContent =
             title;
@@ -61,9 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalText.textContent =
             message;
 
-        modal.classList.remove(
-            "hidden"
-        );
+        modal.classList.remove("hidden");
 
         modal.setAttribute(
             "aria-hidden",
@@ -73,14 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.add(
             "modal-open"
         );
+
     };
 
 
     const hideModal = () => {
 
-        if (!modal) {
-            return;
-        }
+        if (!modal) return;
 
         modal.classList.add(
             "hidden"
@@ -94,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove(
             "modal-open"
         );
+
     };
 
 
@@ -119,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
-    // PAYMENT PLAN BUTTONS
+    // PLAN BUTTONS
     // =========================
 
     document
@@ -130,70 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "click",
                 () => {
 
-                    const plan =
-                        button.dataset.plan;
-
-
-                    // =========================
-                    // PRIME PLUS
-                    // =========================
-
-                    if (plan === "PRIME PLUS") {
-
-                        if (
-                            PLUS_PAYMENT_URL ===
-                            "PASTE_YOUR_PRIME_PLUS_STRIPE_LINK_HERE"
-                        ) {
-
-                            openModal(
-                                "PRIME PLUS",
-                                "PRIME PLUS payments are being prepared. Please check back soon."
-                            );
-
-                            return;
-                        }
-
-                        window.location.href =
-                            PLUS_PAYMENT_URL;
-
-                        return;
-                    }
-
-
-                    // =========================
-                    // PRIME PRO
-                    // =========================
-
-                    if (plan === "PRIME PRO") {
-
-                        if (
-                            PRO_PAYMENT_URL ===
-                            "PASTE_YOUR_PRIME_PRO_STRIPE_LINK_HERE"
-                        ) {
-
-                            openModal(
-                                "PRIME PRO",
-                                "PRIME PRO payments are being prepared. Please check back soon."
-                            );
-
-                            return;
-                        }
-
-                        window.location.href =
-                            PRO_PAYMENT_URL;
-
-                        return;
-                    }
-
-
-                    // =========================
-                    // FALLBACK
-                    // =========================
-
-                    openModal(
-                        "PRIME",
-                        "This membership option is not available right now."
-                    );
+                    window.location.href =
+                        PATREON_URL;
 
                 }
             );
@@ -231,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // =========================
     // CLOSE MODAL BY CLICKING
-    // OUTSIDE
+    // OUTSIDE OF IT
     // =========================
 
     if (modal) {
@@ -240,9 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             (event) => {
 
-                if (
-                    event.target === modal
-                ) {
+                if (event.target === modal) {
 
                     hideModal();
 
@@ -262,9 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "keydown",
         (event) => {
 
-            if (
-                event.key === "Escape"
-            ) {
+            if (event.key === "Escape") {
 
                 hideModal();
 
@@ -275,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
-    // SCROLL REVEAL
+    // SCROLL REVEAL ANIMATION
     // =========================
 
     const revealObserver =
@@ -283,25 +204,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             (entries) => {
 
-                entries.forEach(
-                    (entry) => {
+                entries.forEach((entry) => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                    if (entry.isIntersecting) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
                     }
-                );
+
+                });
 
             },
 
@@ -392,139 +309,138 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    counters.forEach(
-        (counter) => {
+    counters.forEach((counter) => {
 
-            const target =
-                Number(
-                    counter.dataset.target
-                );
-
-
-            if (
-                !Number.isFinite(target) ||
-                target <= 0
-            ) {
-
-                return;
-
-            }
+        const target =
+            Number(
+                counter.dataset.target
+            );
 
 
-            let started =
-                false;
+        if (
+            !Number.isFinite(target) ||
+            target <= 0
+        ) {
+
+            return;
+
+        }
 
 
-            const animateCounter =
-                () => {
+        let started =
+            false;
 
-                    if (started) {
-                        return;
+
+        const animateCounter = () => {
+
+            if (started) return;
+
+
+            started =
+                true;
+
+
+            const duration =
+                900;
+
+
+            const startTime =
+                performance.now();
+
+
+            const update =
+                (currentTime) => {
+
+                    const progress =
+                        Math.min(
+
+                            (
+                                currentTime -
+                                startTime
+                            ) /
+                            duration,
+
+                            1
+
+                        );
+
+
+                    const eased =
+                        1 -
+
+                        Math.pow(
+                            1 - progress,
+                            3
+                        );
+
+
+                    counter.textContent =
+                        Math.round(
+                            target *
+                            eased
+                        );
+
+
+                    if (
+                        progress < 1
+                    ) {
+
+                        requestAnimationFrame(
+                            update
+                        );
+
+                    } else {
+
+                        counter.textContent =
+                            target;
+
                     }
-
-
-                    started =
-                        true;
-
-
-                    const duration =
-                        900;
-
-
-                    const startTime =
-                        performance.now();
-
-
-                    const update =
-                        (currentTime) => {
-
-                            const progress =
-                                Math.min(
-                                    (
-                                        currentTime -
-                                        startTime
-                                    ) /
-                                    duration,
-                                    1
-                                );
-
-
-                            const eased =
-                                1 -
-                                Math.pow(
-                                    1 - progress,
-                                    3
-                                );
-
-
-                            counter.textContent =
-                                Math.round(
-                                    target *
-                                    eased
-                                );
-
-
-                            if (
-                                progress < 1
-                            ) {
-
-                                requestAnimationFrame(
-                                    update
-                                );
-
-                            } else {
-
-                                counter.textContent =
-                                    target;
-
-                            }
-
-                        };
-
-
-                    requestAnimationFrame(
-                        update
-                    );
 
                 };
 
 
-            const counterObserver =
-                new IntersectionObserver(
-
-                    (entries) => {
-
-                        entries.forEach(
-                            (entry) => {
-
-                                if (
-                                    entry.isIntersecting
-                                ) {
-
-                                    animateCounter();
-
-                                    counterObserver.disconnect();
-
-                                }
-
-                            }
-                        );
-
-                    },
-
-                    {
-                        threshold: 0.4
-                    }
-
-                );
-
-
-            counterObserver.observe(
-                counter
+            requestAnimationFrame(
+                update
             );
 
-        }
-    );
+        };
+
+
+        const counterObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                animateCounter();
+
+                                counterObserver.disconnect();
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.4
+                }
+
+            );
+
+
+        counterObserver.observe(
+            counter
+        );
+
+    });
 
 
     // =========================
@@ -563,9 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
 
-                    if (!target) {
-                        return;
-                    }
+                    if (!target) return;
 
 
                     event.preventDefault();
